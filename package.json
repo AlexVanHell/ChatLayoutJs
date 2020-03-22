@@ -1,0 +1,10 @@
+{
+  "name": "chat-layout-js",
+  "version": "0.1.0",
+  "description": "WebComponent to implement chat UI features in a easy and fast way",
+  "main": "index.js",
+  "repository": "https://github.com/AlexVanHell/ChatLayoutJS.git",
+  "author": "alexvanhell <alejandrodnl.cv@hotmail.com>",
+  "license": "MIT",
+  "private": false
+}
