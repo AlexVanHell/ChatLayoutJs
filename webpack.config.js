@@ -1,34 +1,58 @@
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const path = require('path');
+
 module.exports = {
+  mode: 'development',
   entry: {
-    'my-lib': './src/index.ts',
-    'my-lib.min': './src/index.ts'
+    'chat-layout': './src/index.ts',
+    'chat-layout.min': './src/index.ts',
   },
   output: {
     path: path.resolve(__dirname, '_bundles'),
     filename: '[name].js',
     libraryTarget: 'umd',
     library: 'ChatLayoutJS',
-    umdNamedDefine: true
+    umdNamedDefine: true,
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js'],
   },
   devtool: 'source-map',
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      sourceMap: true,
-      include: /\.min\.js$/,
-    })
-  ],
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          minimize: true,
+          sourceMap: true,
+          include: /\.min\.js$/,
+        },
+      }),
+    ],
+  },
   module: {
-    loaders: [{
-      test: /\.tsx?$/,
-      loader: 'awesome-typescript-loader',
-      exclude: /node_modules/,
-      query: {
-        declaration: false,
-      }
-    }]
-  }
-}
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
+      },
+    ],
+  },
+};
