@@ -1,5 +1,6 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -15,7 +16,13 @@ module.exports = {
     umdNamedDefine: true,
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    modules: ['node_modules/', path.resolve(__dirname, '/src')],
+    alias: {
+      react: 'preact/compat',
+      'react-dom/test-utils': 'preact/test-utils',
+      'react-dom': 'preact/compat',
+    },
   },
   devtool: 'source-map',
   optimization: {
@@ -41,6 +48,7 @@ module.exports = {
             },
           },
         ],
+        exclude: /node_modules/,
       },
       {
         test: /\.s[ac]ss$/i,

@@ -12,7 +12,7 @@
     "prebuild": "rimraf _bundles lib lib-esm",
     "build:lib": "tsc -m es6 --outDir lib-esm",
     "build": "tsc && npm run build:lib && webpack",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "start": "webpack --",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
     "test": "jest",
@@ -23,10 +23,13 @@
   },
   "dependencies": {
     "preact": "^10.4.4",
+    "prop-types": "^15.7.2",
     "rxjs": "^6.5.5"
   },
   "devDependencies": {
     "@types/jest": "^26.0.3",
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "^16.9.41",
     "eslint": "^7.3.1",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
@@ -35,6 +38,7 @@
     "jest": "^26.1.0",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
+    "react": "^16.13.1",
     "rimraf": "^3.0.2",
     "sass": "^1.26.9",
     "sass-loader": "^8.0.2",
@@ -58,7 +62,12 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^react$": "preact/compat",
+      "^react-dom/test-utils$": "preact/test-utils",
+      "^react-dom$": "preact/compat"
+    }
   },
   "lint-staged": {
     "*.{ts}": [
