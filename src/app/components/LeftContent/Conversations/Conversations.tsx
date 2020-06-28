@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { ChatLayoutListItemInterface } from '../../../../types/layout/list/chat-layout-list-item.interface';
+import ScrollListener from '../../../HOCs/ScrollListener';
 import ConversationItem from '../ConversationItem/ConversationItem';
 import styles from './Conversations.scss';
 
-interface Props {
+interface ConversationsProps {
   items: ChatLayoutListItemInterface[];
 }
 
-const Conversations = (props: Props) => {
+const Conversations = (props: ConversationsProps) => {
   const { items } = props;
 
   return (
@@ -24,4 +25,4 @@ Conversations.propTypes = {
   items: PropTypes.array.isRequired,
 };
 
-export default Conversations;
+export default ScrollListener(Conversations);

@@ -1,6 +1,6 @@
 import { render } from 'preact';
 import React from 'react';
-import App from '../app/components/App';
+import App from '../app/App';
 import { ChatLayout } from './chat-layout';
 
 export class ChatLayoutLoader {

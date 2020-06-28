@@ -4,11 +4,11 @@ import { ChatLayoutGroupInterface } from '../../../../types/layout/chat-layout-g
 import GroupItem from '../GroupItem/GroupItem';
 import styles from './Groups.scss';
 
-interface Props {
+interface GroupsProps {
   groups: ChatLayoutGroupInterface[];
 }
 
-const Groups = (props: Props) => {
+const Groups = (props: GroupsProps) => {
   const { groups } = props;
 
   return (

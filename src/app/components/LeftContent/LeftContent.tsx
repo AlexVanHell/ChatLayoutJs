@@ -1,6 +1,8 @@
 import React, { Fragment, useContext, useState } from 'react';
 import { ChatLayoutGroupInterface } from '../../../types/layout/chat-layout-group.interface';
 import { LayoutHandlerContext } from '../../context/layout-handler.context';
+import LeftHead from '../../themes/HOCs/LeftHead/LeftHead';
+import { Searchbar } from '../../themes/HOCs/Searchbar/Searchbar';
 import Foot from '../Foot/Foot';
 import Head from '../Head/Head';
 import Conversations from './Conversations/Conversations';
@@ -13,13 +15,18 @@ const LeftContent = () => {
     groups[0] || ({ items: [] } as ChatLayoutGroupInterface),
   );
 
+  const handleSearchInputValueChange = (value: string) => {
+    console.log(value);
+  };
+
   return (
     <Fragment>
       <Head>
-        <h1 style={{ margin: 0, padding: '4px' }}>Chat</h1>
+        <LeftHead />
       </Head>
+      <Searchbar onInputValueChange={handleSearchInputValueChange} />
+      <Groups groups={groups} />
       <Foot>
-        <Groups groups={groups} />
         <Conversations items={state.items} />
       </Foot>
     </Fragment>

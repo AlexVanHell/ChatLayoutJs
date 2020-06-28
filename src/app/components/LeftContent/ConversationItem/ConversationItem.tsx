@@ -3,11 +3,11 @@ import React from 'react';
 import { ChatLayoutListItemInterface } from '../../../../types/layout/list/chat-layout-list-item.interface';
 import styles from './ConversationItem.scss';
 
-interface Props {
+interface ConversationItemProps {
   item: ChatLayoutListItemInterface;
 }
 
-const ConversationItem = (props: Props) => {
+const ConversationItem = (props: ConversationItemProps) => {
   const { item } = props;
 
   return <div className={styles.container}>{item.id}</div>;

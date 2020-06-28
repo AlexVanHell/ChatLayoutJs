@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Props } from 'react';
 import styles from './Head.scss';
 
-const Head = (props: React.Props<any>) => {
+const Head = (props: Props<any>) => {
   return <div className={styles.container}>{props.children}</div>;
 };
 
