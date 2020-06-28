@@ -8,8 +8,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "webpack": "webpack",
-    "prebuild": "rimraf _bundles lib lib-esm",
+    "webpack": "rimraf _bundles && webpack",
+    "prebuild": "rimraf lib lib-esm",
     "build:lib": "tsc -m es6 --outDir lib-esm",
     "build": "tsc && npm run build:lib && webpack",
     "format": "prettier --write \"src/**/*.ts\"",

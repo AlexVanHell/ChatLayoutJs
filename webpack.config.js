@@ -31,10 +31,16 @@ module.exports = {
     minimizer: [
       new UglifyJsPlugin({
         uglifyOptions: {
+          mangle: true,
+          ouput: {
+            comments: false,
+            beautfy: false,
+          },
+          compress: true,
           minimize: true,
-          sourceMap: true,
-          include: /\.min\.js$/,
         },
+        include: [/\.min\.js$/gi],
+        sourceMap: true,
       }),
     ],
   },
