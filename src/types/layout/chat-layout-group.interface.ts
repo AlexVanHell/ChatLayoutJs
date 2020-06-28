@@ -2,19 +2,15 @@ import { ChatLayoutIdentifierInterface } from '../common/chat-layout-identifier.
 import { ChatLayoutListInterface } from './list/chat-layout-list.interface';
 
 export interface ChatLayoutGroupInterface
-  extends ChatLayoutIdentifierInterface {
+  extends ChatLayoutIdentifierInterface,
+    ChatLayoutListInterface {
   /**
    * Name of the group
    */
   name: string;
 
   /**
-   * Group icon
+   * Group iconƒ
    */
   icon?: string;
-
-  /**
-   * Conversations list
-   */
-  list: ChatLayoutListInterface;
 }

@@ -26,5 +26,5 @@ export interface ChatLayoutListInterface
    * Remove item at specific position
    * @param index Index position to remove the item
    */
-  remove(index: number): void;
+  removeAt(index: number): void;
 }

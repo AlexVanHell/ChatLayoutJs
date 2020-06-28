@@ -1,6 +1,8 @@
+const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
-const webpack = require('webpack');
+const WriteFilePlugin = require('write-file-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
@@ -16,7 +18,7 @@ module.exports = {
     umdNamedDefine: true,
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss'],
     modules: ['node_modules/', path.resolve(__dirname, '/src')],
     alias: {
       react: 'preact/compat',
@@ -36,6 +38,15 @@ module.exports = {
       }),
     ],
   },
+  plugins: [
+    new WriteFilePlugin(),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
   module: {
     rules: [
       {
@@ -54,13 +65,36 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
-          'style-loader',
+          // Fallback to style-loader in development
+          process.env.NODE_ENV !== 'production'
+            ? 'style-loader'
+            : MiniCssExtractPlugin.loader,
           // Translates CSS into CommonJS
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+            },
+            // localIdentName: '[name]__[local]___[hash:base64:5]',
+          },
           // Compiles Sass to CSS
           'sass-loader',
         ],
       },
     ],
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, '_bundles'),
+    contentBasePublicPath: '/',
+    compress: true,
+    port: 9000,
+    hot: true,
+    publicPath: './_bundles',
+    before: (app, server, compiler) => {
+      app.get('/', (req, res) => {
+        res.sendFile(path.join(__dirname, 'test', 'views', 'index.html'));
+      });
+    },
   },
 };

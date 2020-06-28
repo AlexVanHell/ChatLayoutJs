@@ -1,6 +1,6 @@
 import { render } from 'preact';
 import React from 'react';
-import ChatLayoutComponent from '../components/ChatLayoutComponent';
+import App from '../app/components/App';
 import { ChatLayout } from './chat-layout';
 
 export class ChatLayoutLoader {
@@ -10,19 +10,17 @@ export class ChatLayoutLoader {
    * Load the layout inside an speecific element
    * @param elementNode The element where the chat layout is going to be added
    */
-  load(elementNode: Element): ChatLayout {
-    const handler = new ChatLayout();
-    this.app = React.createElement(ChatLayoutComponent, { handler }, null);
-
+  public load(elementNode: Element): ChatLayout {
+    const layoutHandler = new ChatLayout();
+    this.app = React.createElement(App, { layoutHandler }, null);
     render(this.app, elementNode);
-
-    return handler;
+    return layoutHandler;
   }
 
   /**
    * Get the react app instance
    */
-  getApp() {
+  public getApp() {
     return this.app;
   }
 }

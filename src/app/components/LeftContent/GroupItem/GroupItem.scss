@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: flex-start;
+  max-width: 100px;
+  height: 100%;
+  margin-right: 0.5rem;
+  border-radius: 20px;
+  padding: 0 1rem;
+  background-color: rgba($color: #000, $alpha: 0.1);
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($color: #000, $alpha: 0.2);
+  }
+
+  h5 {
+    text-align: center;
+    width: auto;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 18px;
+  }
+}

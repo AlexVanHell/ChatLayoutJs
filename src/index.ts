@@ -1,3 +1,3 @@
-import { ChatLayout } from './core/chat-layout';
+import { ChatLayoutLoader } from './core/chat-layout-loader';
 
-export default ChatLayout;
+export = ChatLayoutLoader;

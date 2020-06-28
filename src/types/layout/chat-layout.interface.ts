@@ -25,10 +25,4 @@ export interface ChatLayoutInterface
    * @param index Index position to remove the group
    */
   removeById(id: string): void;
-
-  /**
-   * Remove group by name
-   * @param index Index position to remove the group
-   */
-  removeByName(id: string): void;
 }
