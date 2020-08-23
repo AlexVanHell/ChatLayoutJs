@@ -9,7 +9,7 @@ export class ThemeAbstractFactory {
 		default: DefaultThemeFactory,
 	};
 
-	public getTheme(name: string = 'default') {
+	public getTheme(name = 'default') {
 		const Theme = this.themeFactories[name];
 		return new Theme();
 	}
