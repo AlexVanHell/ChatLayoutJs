@@ -1,24 +1,24 @@
 export interface ChatLayoutMessageContentTextInterface {
-  /**
-   * Text message body
-   */
-  body: string;
+	/**
+	 * Text message body
+	 */
+	body: string;
 }
 
 export interface ChatLayoutMessageContentLinkInterface
-  extends ChatLayoutMessageContentTextInterface {
-  /**
-   * Link url
-   */
-  url: string;
+	extends ChatLayoutMessageContentTextInterface {
+	/**
+	 * Link url
+	 */
+	url: string;
 }
 
 export interface ChatLayoutMessageContentMediaInterface
-  extends ChatLayoutMessageContentTextInterface {
-  file: File;
+	extends ChatLayoutMessageContentTextInterface {
+	file: File;
 }
 
 export type ChatLayoutMessageContent =
-  | ChatLayoutMessageContentTextInterface
-  | ChatLayoutMessageContentLinkInterface
-  | ChatLayoutMessageContentMediaInterface;
+	| ChatLayoutMessageContentTextInterface
+	| ChatLayoutMessageContentLinkInterface
+	| ChatLayoutMessageContentMediaInterface;

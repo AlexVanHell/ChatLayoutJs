@@ -3,31 +3,31 @@ import { LeftHeadProps } from './HOCs/LeftHead/LeftHead';
 import { SearchbarProps } from './HOCs/Searchbar/Searchbar';
 
 export interface ThemeAbstractFactoryInterface {
-  createLeftHead(): ComponentType<LeftHeadProps>;
+	createLeftHead(): ComponentType<LeftHeadProps>;
 
-  createRightHead?(): ComponentType<any>;
+	createRightHead?(): ComponentType<any>;
 
-  createSearchbar(): ComponentType<SearchbarProps>;
+	createSearchbar(): ComponentType<SearchbarProps>;
 
-  createPrimaryButton(): ComponentType<any>;
+	createPrimaryButton(): ComponentType<any>;
 
-  createConversationItem(): ComponentType<any>;
+	createConversationItem(): ComponentType<any>;
 
-  createMessageSendContent(): ComponentType<any>;
+	createMessageSendContent(): ComponentType<any>;
 
-  createMessageInput(): ComponentType<any>;
+	createMessageInput(): ComponentType<any>;
 
-  createMessageItem(): ComponentType<any>;
+	createMessageItem(): ComponentType<any>;
 
-  createPopupList(): ComponentType<any>;
+	createPopupList(): ComponentType<any>;
 
-  createPopupListItem(): ComponentType<any>;
+	createPopupListItem(): ComponentType<any>;
 
-  createDetailSection(): ComponentType<any>;
+	createDetailSection(): ComponentType<any>;
 
-  createHorizontalSelection(): ComponentType<any>;
+	createHorizontalSelection(): ComponentType<any>;
 
-  createList(): ComponentType<any>;
+	createList(): ComponentType<any>;
 
-  createListItem(): ComponentType<any>;
+	createListItem(): ComponentType<any>;
 }

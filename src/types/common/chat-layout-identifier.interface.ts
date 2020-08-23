@@ -1,6 +1,6 @@
 export interface ChatLayoutIdentifierInterface {
-  /**
-   * Element unique identifier
-   */
-  id: string;
+	/**
+	 * Element unique identifier
+	 */
+	id: string;
 }
