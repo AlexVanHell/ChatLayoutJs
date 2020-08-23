@@ -5,23 +5,23 @@ import GroupItem from '../GroupItem/GroupItem';
 import styles from './Groups.scss';
 
 interface GroupsProps {
-  groups: ChatLayoutGroupInterface[];
+	groups: ChatLayoutGroupInterface[];
 }
 
 const Groups = (props: GroupsProps) => {
-  const { groups } = props;
+	const { groups } = props;
 
-  return (
-    <div className={styles.container}>
-      {groups.map((group) => (
-        <GroupItem key={group.id} group={group} />
-      ))}
-    </div>
-  );
+	return (
+		<div className={styles.container}>
+			{groups.map((group) => (
+				<GroupItem key={group.id} group={group} />
+			))}
+		</div>
+	);
 };
 
 Groups.propTypes = {
-  groups: PropTypes.array.isRequired,
+	groups: PropTypes.array.isRequired,
 };
 
 export default Groups;

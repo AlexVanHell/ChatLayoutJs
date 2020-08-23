@@ -7,29 +7,29 @@ import { ThemeContext } from './context/theme.context';
 import { ThemeAbstractFactory } from './themes/theme.abstract-factory';
 
 interface AppProps {
-  layoutHandler: ChatLayout;
-  theme?: string;
+	layoutHandler: ChatLayout;
+	theme?: string;
 }
 
 class App extends Component<AppProps> {
-  static propTypes = {
-    layoutHandler: PropTypes.object.isRequired,
-    theme: PropTypes.string,
-  };
+	static propTypes = {
+		layoutHandler: PropTypes.object.isRequired,
+		theme: PropTypes.string,
+	};
 
-  render() {
-    let { layoutHandler, theme } = this.props;
+	public render() {
+		const { layoutHandler, theme } = this.props;
 
-    const themeInstance = new ThemeAbstractFactory().getTheme(theme);
+		const themeInstance = new ThemeAbstractFactory().getTheme(theme);
 
-    return (
-      <LayoutHandlerContext.Provider value={layoutHandler}>
-        <ThemeContext.Provider value={themeInstance}>
-          <MainContainer />
-        </ThemeContext.Provider>
-      </LayoutHandlerContext.Provider>
-    );
-  }
+		return (
+			<LayoutHandlerContext.Provider value={layoutHandler}>
+				<ThemeContext.Provider value={themeInstance}>
+					<MainContainer />
+				</ThemeContext.Provider>
+			</LayoutHandlerContext.Provider>
+		);
+	}
 }
 
 export default App;

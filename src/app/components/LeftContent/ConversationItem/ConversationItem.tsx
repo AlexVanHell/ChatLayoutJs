@@ -4,17 +4,17 @@ import { ChatLayoutListItemInterface } from '../../../../types/layout/list/chat-
 import styles from './ConversationItem.scss';
 
 interface ConversationItemProps {
-  item: ChatLayoutListItemInterface;
+	item: ChatLayoutListItemInterface;
 }
 
 const ConversationItem = (props: ConversationItemProps) => {
-  const { item } = props;
+	const { item } = props;
 
-  return <div className={styles.container}>{item.id}</div>;
+	return <div className={styles.container}>{item.id}</div>;
 };
 
 ConversationItem.propTypes = {
-  item: PropTypes.object.isRequired,
+	item: PropTypes.object.isRequired,
 };
 
 export default ConversationItem;

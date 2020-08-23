@@ -1,58 +1,57 @@
-import React, { Props } from 'react';
 import { ThemeAbstractFactoryInterface } from '../theme.abstract-factory.interface';
 import DefaultLeftHead from './LeftHead/DefaultLeftHead';
 import DefaultSearchbar from './Searchbar/DefaultSearchbar';
 
 export class DefaultThemeFactory implements ThemeAbstractFactoryInterface {
-  createLeftHead() {
-    return DefaultLeftHead;
-  }
+	public createLeftHead() {
+		return DefaultLeftHead;
+	}
 
-  createSearchbar() {
-    return DefaultSearchbar;
-  }
+	public createSearchbar() {
+		return DefaultSearchbar;
+	}
 
-  createPrimaryButton() {
-    return (props: Props<any>) => <div></div>;
-  }
+	public createPrimaryButton() {
+		return null;
+	}
 
-  createConversationItem() {
-    return (props: Props<any>) => <div></div>;
-  }
+	public createConversationItem() {
+		return null;
+	}
 
-  createMessageSendContent() {
-    return (props: Props<any>) => <div></div>;
-  }
+	public createMessageSendContent() {
+		return null;
+	}
 
-  createMessageInput() {
-    return (props: Props<any>) => <div></div>;
-  }
+	public createMessageInput() {
+		return null;
+	}
 
-  createMessageItem() {
-    return (props: Props<any>) => <div></div>;
-  }
+	public createMessageItem() {
+		return null;
+	}
 
-  createPopupList() {
-    return (props: Props<any>) => <div></div>;
-  }
+	public createPopupList() {
+		return null;
+	}
 
-  createPopupListItem() {
-    return (props: Props<any>) => <div></div>;
-  }
+	public createPopupListItem() {
+		return null;
+	}
 
-  createDetailSection() {
-    return (props: Props<any>) => <div></div>;
-  }
+	public createDetailSection() {
+		return null;
+	}
 
-  createHorizontalSelection() {
-    return (props: Props<any>) => <div></div>;
-  }
+	public createHorizontalSelection() {
+		return null;
+	}
 
-  createList() {
-    return (props: Props<any>) => <div></div>;
-  }
+	public createList() {
+		return null;
+	}
 
-  createListItem() {
-    return (props: Props<any>) => <div></div>;
-  }
+	public createListItem() {
+		return null;
+	}
 }

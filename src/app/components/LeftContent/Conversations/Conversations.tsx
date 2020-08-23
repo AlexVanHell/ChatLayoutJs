@@ -6,23 +6,23 @@ import ConversationItem from '../ConversationItem/ConversationItem';
 import styles from './Conversations.scss';
 
 interface ConversationsProps {
-  items: ChatLayoutListItemInterface[];
+	items: ChatLayoutListItemInterface[];
 }
 
 const Conversations = (props: ConversationsProps) => {
-  const { items } = props;
+	const { items } = props;
 
-  return (
-    <div className={styles.container}>
-      {items.map((item) => (
-        <ConversationItem key={item.id} item={item} />
-      ))}
-    </div>
-  );
+	return (
+		<div className={styles.container}>
+			{items.map((item) => (
+				<ConversationItem key={item.id} item={item} />
+			))}
+		</div>
+	);
 };
 
 Conversations.propTypes = {
-  items: PropTypes.array.isRequired,
+	items: PropTypes.array.isRequired,
 };
 
 export default ScrollListener(Conversations);

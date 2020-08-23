@@ -4,21 +4,21 @@ import { ChatLayoutGroupInterface } from '../../../../types/layout/chat-layout-g
 import styles from './GroupItem.scss';
 
 interface GroupItemProps {
-  group: ChatLayoutGroupInterface;
+	group: ChatLayoutGroupInterface;
 }
 
 const GroupItem = (props: GroupItemProps) => {
-  const { group } = props;
+	const { group } = props;
 
-  return (
-    <div className={styles.container}>
-      <h5>{group.name}</h5>
-    </div>
-  );
+	return (
+		<div className={styles.container}>
+			<h5>{group.name}</h5>
+		</div>
+	);
 };
 
 GroupItem.propTypes = {
-  group: PropTypes.object.isRequired,
+	group: PropTypes.object.isRequired,
 };
 
 export default GroupItem;
