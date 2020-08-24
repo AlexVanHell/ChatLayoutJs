@@ -1,0 +1,48 @@
+@import '../variables';
+
+@mixin button-sizes {
+	@each $name, $size in $button-sizes {
+		&.btn-#{$name} {
+			height: $size !important;
+
+			&.btn-square,
+			&.btn-circle {
+				width: $size !important;
+				padding: 0;
+			}
+		}
+	}
+}
+
+@mixin button-colors {
+	@each $name, $color in $theme-colors {
+		&.btn-#{$name} {
+			background-color: $color !important;
+		}
+	}
+}
+
+@mixin buttons {
+	.btn {
+		display: flex;
+		padding: 0 12px;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+		border-radius: $button-radius;
+		border: none;
+	}
+
+	.btn {
+		&.btn-square {
+			border-radius: $button-radius;
+			padding: 0;
+		}
+		&.btn-circle {
+			border-radius: 100%;
+			padding: 0;
+		}
+		@include button-sizes();
+		@include button-colors();
+	}
+}

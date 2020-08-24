@@ -1,12 +1,13 @@
-import React, { Fragment, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ChatLayoutGroupInterface } from '../../../types/layout/chat-layout-group.interface';
 import { LayoutHandlerContext } from '../../context/layout-handler.context';
-import LeftHead from '../../themes/HOCs/LeftHead/LeftHead';
-import { Searchbar } from '../../themes/HOCs/Searchbar/Searchbar';
+import bgColorStyles from '../../scss/color/bg-colors.scss';
 import Foot from '../Foot/Foot';
-import Head from '../Head/Head';
+import Searchbar from '../Searchbar/Searchbar';
 import Conversations from './Conversations/Conversations';
 import Groups from './Groups/Groups';
+import styles from './LeftContent.scss';
+import LeftTopContent from './TopContent/LeftTopContent';
 
 const LeftContent = () => {
 	const layoutHandler = useContext(LayoutHandlerContext);
@@ -20,16 +21,16 @@ const LeftContent = () => {
 	};
 
 	return (
-		<Fragment>
-			<Head>
-				<LeftHead />
-			</Head>
-			<Searchbar onInputValueChange={handleSearchInputValueChange} />
+		<div className={`${styles.container} ${bgColorStyles.bgDepth1}`}>
+			<div className={styles.top}>
+				<LeftTopContent></LeftTopContent>
+				<Searchbar onInputValueChange={handleSearchInputValueChange} />
+			</div>
 			<Groups groups={groups} />
 			<Foot>
 				<Conversations items={state.items} />
 			</Foot>
-		</Fragment>
+		</div>
 	);
 };
 

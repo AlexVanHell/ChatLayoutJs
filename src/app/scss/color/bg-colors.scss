@@ -1,0 +1,6 @@
+/* Background colors */
+@import '../mixin/bg-depth-colors';
+@import '../mixin/bg-theme-colors';
+
+@include bg-depth-colors();
+@include bg-theme-colors();

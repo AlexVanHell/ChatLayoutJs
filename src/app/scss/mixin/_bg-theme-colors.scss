@@ -1,0 +1,9 @@
+@import '../variables';
+
+@mixin bg-theme-colors {
+	@each $name, $color in $theme-colors {
+		.bg#{$name} {
+			background-color: $color !important;
+		}
+	}
+}

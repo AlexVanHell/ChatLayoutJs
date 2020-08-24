@@ -1,0 +1,68 @@
+$light-base-color: #fff;
+$dark-base-color: #212121;
+
+$factor: 2%;
+$hoverable-factor: 4%;
+
+@mixin bg-depth-colors {
+	@for $i from 0 to 6 {
+		$total: $i * $factor;
+		$hoverable-total: $i * $hoverable-factor;
+
+		.bgDepth#{$i} {
+			background-color: darken(
+				$color: $light-base-color,
+				$amount: $total
+			) !important;
+			color: $dark-base-color;
+
+			&.hoverable {
+				cursor: pointer;
+				&:hover {
+					background-color: darken(
+						$color: $light-base-color,
+						$amount: $hoverable-total
+					) !important;
+				}
+			}
+		}
+
+		.bgHoverDepth#{$i} {
+			cursor: pointer;
+			&:hover {
+				background-color: darken(
+					$color: $light-base-color,
+					$amount: $hoverable-total
+				) !important;
+			}
+		}
+
+		.darkTheme {
+			.bgDepth#{$i} {
+				background-color: lighten(
+					$color: $dark-base-color,
+					$amount: $total
+				) !important;
+				color: $light-base-color;
+
+				&.hoverable {
+					&:hover {
+						background-color: lighten(
+							$color: $dark-base-color,
+							$amount: $hoverable-total
+						) !important;
+					}
+				}
+			}
+
+			.bgHoverDepth#{$i} {
+				&:hover {
+					background-color: lighten(
+						$color: $dark-base-color,
+						$amount: $hoverable-total
+					) !important;
+				}
+			}
+		}
+	}
+}

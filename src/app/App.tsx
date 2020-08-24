@@ -4,9 +4,8 @@ import { ChatLayout } from '../core/chat-layout';
 import MainContainer from './components/MainContainer/MainContainer';
 import { LayoutHandlerContext } from './context/layout-handler.context';
 import { ThemeContext } from './context/theme.context';
-import { ThemeAbstractFactory } from './themes/theme.abstract-factory';
 
-interface AppProps {
+export interface AppProps {
 	layoutHandler: ChatLayout;
 	theme?: string;
 }
@@ -20,11 +19,9 @@ class App extends Component<AppProps> {
 	public render() {
 		const { layoutHandler, theme } = this.props;
 
-		const themeInstance = new ThemeAbstractFactory().getTheme(theme);
-
 		return (
 			<LayoutHandlerContext.Provider value={layoutHandler}>
-				<ThemeContext.Provider value={themeInstance}>
+				<ThemeContext.Provider value={theme}>
 					<MainContainer />
 				</ThemeContext.Provider>
 			</LayoutHandlerContext.Provider>

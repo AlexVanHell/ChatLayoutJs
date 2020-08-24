@@ -1,6 +1,4 @@
-import { render } from 'preact';
-import React from 'react';
-import App from '../app/App';
+import { initApp } from '../app';
 import { ChatLayout } from './chat-layout';
 
 export class ChatLayoutLoader {
@@ -12,8 +10,7 @@ export class ChatLayoutLoader {
 	 */
 	public load(elementNode: Element): ChatLayout {
 		const layoutHandler = new ChatLayout();
-		this.app = React.createElement(App, { layoutHandler }, null);
-		render(this.app, elementNode);
+		initApp(elementNode, { layoutHandler });
 		return layoutHandler;
 	}
 
