@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ChatLayoutGroupInterface } from '../../../types/layout/chat-layout-group.interface';
 import { LayoutHandlerContext } from '../../context/layout-handler.context';
-import bgColorStyles from '../../scss/color/bg-colors.scss';
 import Foot from '../Foot/Foot';
 import Searchbar from '../Searchbar/Searchbar';
 import Conversations from './Conversations/Conversations';
@@ -21,7 +20,7 @@ const LeftContent = () => {
 	};
 
 	return (
-		<div className={`${styles.container} ${bgColorStyles.bgDepth1}`}>
+		<div className={`${styles.container} ${styles['bg-depth-1']}`}>
 			<div className={styles.top}>
 				<LeftTopContent></LeftTopContent>
 				<Searchbar onInputValueChange={handleSearchInputValueChange} />

@@ -1,7 +1,6 @@
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import bgColorStyles from '../../scss/color/bg-colors.scss';
 import Button from '../Button/Button';
 import styles from './Searchbar.scss';
 
@@ -16,14 +15,14 @@ const Searchbar = (props: SearchbarProps) => {
 				<Button
 					size={'sm'}
 					type={'circle'}
-					className={`${bgColorStyles.bgDepth1} ${bgColorStyles.hoverable}`}
+					className={`${styles['bg-depth-1']} ${styles.hoverable}`}
 				>
 					<FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
 				</Button>
 			</div>
 			<input
 				type="text"
-				className={bgColorStyles.bgDepth0}
+				className={styles['bg-depth-0']}
 				placeholder="Search"
 				onInput={(e) => props.onInputValueChange(e.currentTarget.value)}
 			/>

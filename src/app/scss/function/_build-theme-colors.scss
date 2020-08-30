@@ -1,0 +1,3 @@
+@function build-theme-colors($map-colors: (), $default-colors: ()) {
+	@return map-merge($map1: $default-colors, $map2: $map-colors);
+}

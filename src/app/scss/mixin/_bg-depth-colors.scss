@@ -1,68 +1,72 @@
-$light-base-color: #fff;
-$dark-base-color: #212121;
+@import '../variables';
+
+$light-base-color: map-get(
+	$map: $bg-base-colors,
+	$key: 'light',
+);
+$dark-base-color: map-get(
+	$map: $bg-base-colors,
+	$key: 'dark',
+);
 
 $factor: 2%;
 $hoverable-factor: 4%;
 
+@mixin bg-depth-hover($bg-base-color, $hoverable-total) {
+	cursor: pointer;
+	&:hover {
+		background-color: darken(
+			$color: $bg-base-color,
+			$amount: $hoverable-total
+		) !important;
+	}
+}
+
+@mixin bg-depth-color(
+	$i,
+	$bg-base-color,
+	$text-color,
+	$total,
+	$hoverable-total
+) {
+	.bg-depth-#{$i} {
+		background-color: darken(
+			$color: $bg-base-color,
+			$amount: $total
+		) !important;
+		color: $text-color;
+
+		&.hoverable {
+			@include bg-depth-hover($bg-base-color, $hoverable-total);
+		}
+	}
+
+	.bg-depth-hover-#{$i} {
+		@include bg-depth-hover($bg-base-color, $hoverable-total);
+	}
+}
+
 @mixin bg-depth-colors {
 	@for $i from 0 to 6 {
-		$total: $i * $factor;
-		$hoverable-total: $i * $hoverable-factor;
+		$bg-total: $i * $factor;
+		$hb-total: $i * $hoverable-factor;
 
-		.bgDepth#{$i} {
-			background-color: darken(
-				$color: $light-base-color,
-				$amount: $total
-			) !important;
-			color: $dark-base-color;
+		@include bg-depth-color(
+			$i,
+			$bg-base-color: $light-base-color,
+			$text-color: map-get($map: $text-colors, $key: 'black'),
+			$total: $bg-total,
+			$hoverable-total: $hb-total
+		);
 
-			&.hoverable {
-				cursor: pointer;
-				&:hover {
-					background-color: darken(
-						$color: $light-base-color,
-						$amount: $hoverable-total
-					) !important;
-				}
-			}
-		}
-
-		.bgHoverDepth#{$i} {
-			cursor: pointer;
-			&:hover {
-				background-color: darken(
-					$color: $light-base-color,
-					$amount: $hoverable-total
-				) !important;
-			}
-		}
-
-		.darkTheme {
-			.bgDepth#{$i} {
-				background-color: lighten(
-					$color: $dark-base-color,
-					$amount: $total
-				) !important;
-				color: $light-base-color;
-
-				&.hoverable {
-					&:hover {
-						background-color: lighten(
-							$color: $dark-base-color,
-							$amount: $hoverable-total
-						) !important;
-					}
-				}
-			}
-
-			.bgHoverDepth#{$i} {
-				&:hover {
-					background-color: lighten(
-						$color: $dark-base-color,
-						$amount: $hoverable-total
-					) !important;
-				}
-			}
+		.dark-theme {
+			@include bg-depth-color(
+				$i,
+				$bg-base-color: $dark-base-color,
+				$text-color: map-get($map: $text-colors, $key: 'white'),
+				$total: $bg-total,
+				$hoverable-total: $hb-total
+			);
 		}
 	}
 }

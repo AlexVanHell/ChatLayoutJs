@@ -14,14 +14,6 @@
 	}
 }
 
-@mixin button-colors {
-	@each $name, $color in $theme-colors {
-		&.btn-#{$name} {
-			background-color: $color !important;
-		}
-	}
-}
-
 @mixin buttons {
 	.btn {
 		display: flex;
@@ -42,7 +34,7 @@
 			border-radius: 100%;
 			padding: 0;
 		}
+
 		@include button-sizes();
-		@include button-colors();
 	}
 }

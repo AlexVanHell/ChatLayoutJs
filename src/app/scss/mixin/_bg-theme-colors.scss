@@ -1,9 +1,19 @@
+@import '../function/color-pallete';
+@import '../function/text-contrast';
 @import '../variables';
 
 @mixin bg-theme-colors {
-	@each $name, $color in $theme-colors {
-		.bg#{$name} {
+	@each $name, $color in $all-colors {
+		.bg-#{$name} {
 			background-color: $color !important;
+			color: text-contrast($color);
+		}
+
+		@each $palette-name, $palette-value in make-color-palette($color) {
+			.bg-#{$name + '-' + $palette-name} {
+				background-color: $palette-value;
+				color: text-contrast($color: $palette-value);
+			}
 		}
 	}
 }
