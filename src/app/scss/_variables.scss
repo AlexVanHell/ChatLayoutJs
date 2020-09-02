@@ -10,6 +10,9 @@ $list-groups-height: 40px;
 $button-radius: 5px;
 $input-radius: 5px;
 
+$depth-factor: 4%;
+$hoverable-factor: 6%;
+
 $bg-depth-light-map: ();
 $bg-depth-dark-map: ();
 
@@ -51,47 +54,4 @@ $colors: (
 	'brown': #795548,
 	'grey': #9e9e9e,
 	'bluegrey': #607d8b,
-);
-
-$main-colors: (
-	primary:
-		map-get(
-			$map: $colors,
-			$key: 'blue',
-		),
-	secondary:
-		map-get(
-			$map: $colors,
-			$key: 'pink',
-		),
-	warning:
-		map-get(
-			$map: $colors,
-			$key: 'amber',
-		),
-	danger:
-		map-get(
-			$map: $colors,
-			$key: 'red',
-		),
-	info:
-		map-get(
-			$map: $colors,
-			$key: 'teal',
-		),
-	light:
-		map-get(
-			$map: $colors,
-			$key: 'grey',
-		),
-);
-
-$theme-colors: build-theme-colors(
-	$map-colors: $main-colors,
-	$default-colors: $main-colors,
-);
-
-$all-colors: map-merge(
-	$map1: $colors,
-	$map2: $theme-colors,
 );

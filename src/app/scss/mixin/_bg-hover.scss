@@ -1,0 +1,6 @@
+@mixin bg-hover($color, $amount) {
+	cursor: pointer;
+	&:hover {
+		background-color: darken($color, $amount) !important;
+	}
+}

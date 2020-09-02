@@ -2,6 +2,7 @@
 
 $input-height: 2rem;
 $icon-size: $input-height - 0.75rem;
+$spacing: 4px;
 
 .container {
 	padding: 0;
@@ -11,7 +12,7 @@ $icon-size: $input-height - 0.75rem;
 	justify-items: flex-start;
 
 	.backButton {
-		padding-right: 4px;
+		padding-right: $spacing;
 	}
 
 	input[type='text'] {
@@ -22,5 +23,9 @@ $icon-size: $input-height - 0.75rem;
 		padding: 0 1rem;
 		border-radius: 5px;
 		height: $input-height;
+	}
+
+	.searchButton {
+		padding-left: $spacing;
 	}
 }

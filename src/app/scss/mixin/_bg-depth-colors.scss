@@ -1,3 +1,4 @@
+@import './bg-hover';
 @import '../variables';
 
 $light-base-color: map-get(
@@ -8,19 +9,6 @@ $dark-base-color: map-get(
 	$map: $bg-base-colors,
 	$key: 'dark',
 );
-
-$factor: 2%;
-$hoverable-factor: 4%;
-
-@mixin bg-depth-hover($bg-base-color, $hoverable-total) {
-	cursor: pointer;
-	&:hover {
-		background-color: darken(
-			$color: $bg-base-color,
-			$amount: $hoverable-total
-		) !important;
-	}
-}
 
 @mixin bg-depth-color(
 	$i,
@@ -37,18 +25,18 @@ $hoverable-factor: 4%;
 		color: $text-color;
 
 		&.hoverable {
-			@include bg-depth-hover($bg-base-color, $hoverable-total);
+			@include bg-hover($color: $bg-base-color, $amount: $hoverable-total);
 		}
 	}
 
 	.bg-depth-hover-#{$i} {
-		@include bg-depth-hover($bg-base-color, $hoverable-total);
+		@include bg-hover($color: $bg-base-color, $amount: $hoverable-total);
 	}
 }
 
 @mixin bg-depth-colors {
 	@for $i from 0 to 6 {
-		$bg-total: $i * $factor;
+		$bg-total: $i * $depth-factor;
 		$hb-total: $i * $hoverable-factor;
 
 		@include bg-depth-color(

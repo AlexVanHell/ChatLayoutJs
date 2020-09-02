@@ -1,18 +1,26 @@
 @import '../function/color-pallete';
 @import '../function/text-contrast';
+@import './bg-hover';
 @import '../variables';
 
 @mixin bg-theme-colors {
-	@each $name, $color in $all-colors {
+	$prefix: 'bg';
+	@each $name, $color in $colors {
 		.bg-#{$name} {
 			background-color: $color !important;
 			color: text-contrast($color);
+			&.hoverable {
+				@include bg-hover($color, $amount: 4%);
+			}
 		}
 
 		@each $palette-name, $palette-value in make-color-palette($color) {
 			.bg-#{$name + '-' + $palette-name} {
-				background-color: $palette-value;
+				background-color: $palette-value !important;
 				color: text-contrast($color: $palette-value);
+				&.hoverable {
+					@include bg-hover($palette-value, $amount: 4%);
+				}
 			}
 		}
 	}

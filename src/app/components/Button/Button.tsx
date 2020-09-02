@@ -1,40 +1,45 @@
-import React, { ReactNode } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
+import { ColorLevelType } from '../../common/theme/color-level.type';
+import { ColorType } from '../../common/theme/color.type';
 import styles from './Button.scss';
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<any> {
 	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-	type?: 'rectangle' | 'square' | 'circle';
-	color?:
-		| 'none'
-		| 'primary'
-		| 'secondary'
-		| 'info'
-		| 'warning'
-		| 'danger'
-		| 'light';
-	className?: string;
-	children?: ReactNode;
+	shape?: '' | 'square' | 'circle';
+	color?: ColorType;
+	colorLevel?: '' | ColorLevelType;
 }
 
 const defaultProps: ButtonProps = {
 	size: 'md',
-	type: 'rectangle',
-	color: 'none',
+	shape: '',
+	color: 'grey',
 	className: '',
 };
 
 const Button = (props: ButtonProps) => {
-	const { size, type, color, className, children } = {
+	const { size, shape, color, colorLevel, className, children } = {
 		...defaultProps,
 		...props,
 	};
 
+	let finalClassName = `${styles.btn} ${styles['btn-' + size]}`;
+
+	if (shape) {
+		finalClassName += ` ${styles['btn-' + shape]}`;
+	}
+
+	if (color) {
+		const finalColor = `${color}${colorLevel ? '-' + colorLevel : ''}`;
+		finalClassName += ` ${styles['btn-' + finalColor]}`;
+	}
+
+	if (className) {
+		finalClassName += ` ${className}`;
+	}
+
 	return (
-		<button
-			className={`${styles.btn} ${styles['btn-' + size]} ${
-				styles['btn-' + type]
-			} ${styles['btn-' + color]}${className ? ' ' + className : ''}`}
-		>
+		<button {...props} className={finalClassName}>
 			{children}
 		</button>
 	);

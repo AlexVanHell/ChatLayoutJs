@@ -1,4 +1,9 @@
+@import '../function/color-pallete';
+@import '../function/text-contrast';
+@import './bg-hover';
 @import '../variables';
+
+$icon-spacing: 4px;
 
 @mixin button-sizes {
 	@each $name, $size in $button-sizes {
@@ -9,6 +14,37 @@
 			&.btn-circle {
 				width: $size !important;
 				padding: 0;
+				overflow: hidden;
+			}
+		}
+	}
+}
+
+@mixin button-hover($color, $amount) {
+	cursor: pointer;
+	&:not(:disabled),
+	&:not(.disabled),
+	&:not(.unhoverable) {
+		@include bg-hover($color, $amount);
+	}
+}
+
+@mixin button-colors {
+	@each $name, $color in $colors {
+		&.btn-#{$name} {
+			background-color: $color;
+			color: text-contrast($color);
+			@include button-hover($color, $amount: $hoverable-factor);
+		}
+
+		@each $palette-name, $palette-value in make-color-palette($color) {
+			&.btn-#{$name + '-' + $palette-name} {
+				background-color: $palette-value;
+				color: text-contrast($color: $palette-value);
+				@include button-hover(
+					$color: $palette-value,
+					$amount: $hoverable-factor
+				);
 			}
 		}
 	}
@@ -23,9 +59,17 @@
 		justify-content: center;
 		border-radius: $button-radius;
 		border: none;
-	}
 
-	.btn {
+		svg.icon {
+			&.left {
+				margin-right: $icon-spacing;
+			}
+
+			&.right {
+				padding-left: $icon-spacing;
+			}
+		}
+
 		&.btn-square {
 			border-radius: $button-radius;
 			padding: 0;
@@ -36,5 +80,6 @@
 		}
 
 		@include button-sizes();
+		@include button-colors();
 	}
 }

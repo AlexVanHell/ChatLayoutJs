@@ -2,7 +2,13 @@
 @import '../function/color-pallete';
 
 @mixin text-colors {
-	@each $name, $color in $all-colors {
+	@each $name, $color in $colors {
+		.text-#{$name} {
+			color: $color !important;
+		}
+	}
+
+	@each $name, $color in $text-colors {
 		.text-#{$name} {
 			color: $color !important;
 		}
