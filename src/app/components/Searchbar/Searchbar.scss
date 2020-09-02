@@ -1,8 +1,11 @@
+@import '../../scss/variables';
 @import '../../scss/color/bg-colors';
 
-$input-height: 2rem;
-$icon-size: $input-height - 0.75rem;
-$spacing: 4px;
+$input-height: map-get(
+	$map: $button-sizes,
+	$key: 'md',
+);
+$spacing: 6px;
 
 .container {
 	padding: 0;

@@ -22,10 +22,11 @@ $icon-spacing: 4px;
 
 @mixin button-hover($color, $amount) {
 	cursor: pointer;
-	&:not(:disabled),
-	&:not(.disabled),
-	&:not(.unhoverable) {
-		@include bg-hover($color, $amount);
+	&.hoverable {
+		&:not(:disabled),
+		&:not(.disabled) {
+			@include bg-hover($color, $amount);
+		}
 	}
 }
 
@@ -52,6 +53,7 @@ $icon-spacing: 4px;
 
 @mixin buttons {
 	.btn {
+		background-color: transparent;
 		display: flex;
 		padding: 0 12px;
 		text-align: center;
@@ -77,6 +79,14 @@ $icon-spacing: 4px;
 		&.btn-circle {
 			border-radius: 100%;
 			padding: 0;
+		}
+
+		&.hoverable {
+			cursor: pointer;
+			&:hover,
+			&:focus {
+				background-color: rgba($color: #000, $alpha: 0.07);
+			}
 		}
 
 		@include button-sizes();

@@ -6,7 +6,7 @@ import Searchbar from '../Searchbar/Searchbar';
 import Conversations from './Conversations/Conversations';
 import Groups from './Groups/Groups';
 import styles from './LeftContent.scss';
-import LeftTopContent from './TopContent/LeftTopContent';
+import LeftTopContent from './LeftTopContent/LeftTopContent';
 
 const LeftContent = () => {
 	const layoutHandler = useContext(LayoutHandlerContext);

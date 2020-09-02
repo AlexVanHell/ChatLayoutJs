@@ -1,3 +1,4 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import React, { ButtonHTMLAttributes } from 'react';
 import { ColorLevelType } from '../../common/theme/color-level.type';
 import { ColorType } from '../../common/theme/color.type';
@@ -6,19 +7,22 @@ import styles from './Button.scss';
 interface ButtonProps extends ButtonHTMLAttributes<any> {
 	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 	shape?: '' | 'square' | 'circle';
-	color?: ColorType;
+	color?: '' | ColorType;
 	colorLevel?: '' | ColorLevelType;
+	hoverable?: boolean;
+	icon?: IconProp | { position: 'left' | 'right'; name: IconProp };
 }
 
 const defaultProps: ButtonProps = {
 	size: 'md',
 	shape: '',
-	color: 'grey',
-	className: '',
+	color: '',
+	colorLevel: '',
+	hoverable: true,
 };
 
 const Button = (props: ButtonProps) => {
-	const { size, shape, color, colorLevel, className, children } = {
+	const { size, shape, color, colorLevel, hoverable, className, children } = {
 		...defaultProps,
 		...props,
 	};
@@ -32,6 +36,10 @@ const Button = (props: ButtonProps) => {
 	if (color) {
 		const finalColor = `${color}${colorLevel ? '-' + colorLevel : ''}`;
 		finalClassName += ` ${styles['btn-' + finalColor]}`;
+	}
+
+	if (hoverable) {
+		finalClassName += ` ${styles.hoverable}`;
 	}
 
 	if (className) {
