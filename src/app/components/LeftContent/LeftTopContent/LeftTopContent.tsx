@@ -1,4 +1,4 @@
-import { faCity, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import Button from '../../Button/Button';
@@ -13,7 +13,7 @@ const LeftTopContent = () => {
 					<FontAwesomeIcon icon={faSearch} />
 				</Button>
 				<Button shape={'circle'} size={'lg'}>
-					<FontAwesomeIcon icon={faCity} />
+					<FontAwesomeIcon icon={faEdit} />
 				</Button>
 			</div>
 		</div>

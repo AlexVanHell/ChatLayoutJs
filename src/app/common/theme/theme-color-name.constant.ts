@@ -1,4 +1,4 @@
-import { ThemeColorsInterface } from '../interface/theme.interface';
+import { ThemeColorsInterface } from './theme.interface';
 
 export const ThemeColorName: (keyof ThemeColorsInterface)[] = [
 	'primary',
