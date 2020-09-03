@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react';
 import { ChatLayoutGroupInterface } from '../../../types/layout/chat-layout-group.interface';
 import { LayoutHandlerContext } from '../../context/layout-handler.context';
 import Foot from '../Foot/Foot';
+import Head from '../Head/Head';
 import Searchbar from '../Searchbar/Searchbar';
 import Conversations from './Conversations/Conversations';
-import Groups from './Groups/Groups';
 import styles from './LeftContent.scss';
-import LeftTopContent from './LeftTopContent/LeftTopContent';
+import LeftTitle from './LeftTitle/LeftTitle';
 
 const LeftContent = () => {
 	const layoutHandler = useContext(LayoutHandlerContext);
@@ -20,13 +20,13 @@ const LeftContent = () => {
 	};
 
 	return (
-		<div className={`${styles.container} ${styles['bg-depth-1']}`}>
-			<div className={styles.top}>
-				<LeftTopContent></LeftTopContent>
+		<div className={`${styles.container} ${styles['bg-depth-0']}`}>
+			<Head>
+				<LeftTitle />
 				<Searchbar onInputValueChange={handleSearchInputValueChange} />
-			</div>
-			<Groups groups={groups} />
-			<Foot>
+			</Head>
+			{/* <Groups groups={groups} /> */}
+			<Foot /* className={styles['bg-depth-1']} */>
 				<Conversations items={state.items} />
 			</Foot>
 		</div>

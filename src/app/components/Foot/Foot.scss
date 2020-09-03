@@ -1,8 +1,9 @@
 .container {
 	display: flex;
-	flex: 1;
+	flex-grow: 1;
 	flex-direction: column;
-	box-sizing: content-box;
+	box-sizing: border-box;
 	padding: 0;
 	overflow: hidden;
+	background: transparent;
 }

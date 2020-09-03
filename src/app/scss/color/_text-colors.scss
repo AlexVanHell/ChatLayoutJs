@@ -1,3 +1,20 @@
 @import '../mixin/text-colors';
+@import '../variables';
 
 @include text-colors();
+
+.text-muted {
+	color: lighten(
+		$color: map-get($map: $text-colors, $key: 'black'),
+		$amount: 50%
+	);
+}
+
+.dark-theme {
+	.text-muted {
+		color: darken(
+			$color: map-get($map: $text-colors, $key: 'black'),
+			$amount: 50%
+		);
+	}
+}

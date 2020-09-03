@@ -1,16 +1,32 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import React, { ButtonHTMLAttributes } from 'react';
-import { ColorLevelType } from '../../common/theme/color-level.type';
-import { ColorType } from '../../common/theme/color.type';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
+import React, { ButtonHTMLAttributes, Fragment } from 'react';
+import { BgDepthColorType } from '../../common/color/bg-depth-color.type';
+import { ColorLevelType } from '../../common/color/color-level.type';
+import { ColorType } from '../../common/color/color.type';
+import { PropTypeRecord } from '../../common/type/prop-type-record.type';
 import styles from './Button.scss';
 
-interface ButtonProps extends ButtonHTMLAttributes<any> {
-	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-	shape?: '' | 'square' | 'circle';
-	color?: '' | ColorType;
-	colorLevel?: '' | ColorLevelType;
+interface ButtonIconInterface {
+	position: 'left' | 'right';
+	variant: IconProp;
+}
+
+type ButtonSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+type ButtonShapeType = '' | 'square' | 'circle';
+
+type ButtonColorType = '' | ColorType | BgDepthColorType;
+
+type ButtonColorLevelType = '' | ColorLevelType;
+interface ButtonProps {
+	size?: ButtonSizeType;
+	shape?: ButtonShapeType;
+	color?: ButtonColorType;
+	colorLevel?: ButtonColorLevelType;
 	hoverable?: boolean;
-	icon?: IconProp | { position: 'left' | 'right'; name: IconProp };
+	icon?: IconProp | ButtonIconInterface;
 }
 
 const defaultProps: ButtonProps = {
@@ -21,8 +37,19 @@ const defaultProps: ButtonProps = {
 	hoverable: true,
 };
 
-const Button = (props: ButtonProps) => {
-	const { size, shape, color, colorLevel, hoverable, className, children } = {
+const Button = (
+	props: ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>,
+) => {
+	const {
+		size,
+		shape,
+		color,
+		colorLevel,
+		icon,
+		hoverable,
+		className,
+		children,
+	} = {
 		...defaultProps,
 		...props,
 	};
@@ -35,7 +62,7 @@ const Button = (props: ButtonProps) => {
 
 	if (color) {
 		const finalColor = `${color}${colorLevel ? '-' + colorLevel : ''}`;
-		finalClassName += ` ${styles['btn-' + finalColor]}`;
+		finalClassName += ` ${styles['bg-' + finalColor]}`;
 	}
 
 	if (hoverable) {
@@ -46,13 +73,50 @@ const Button = (props: ButtonProps) => {
 		finalClassName += ` ${className}`;
 	}
 
+	let innerContent = children;
+
+	if (icon) {
+		if ((icon as ButtonIconInterface).position === 'left') {
+			innerContent = (
+				<Fragment>
+					<FontAwesomeIcon
+						className={`${styles.icon} ${styles.left}`}
+						icon={(icon as ButtonIconInterface).variant}
+					/>
+					{children}
+				</Fragment>
+			);
+		} else if ((icon as ButtonIconInterface).position === 'right') {
+			innerContent = (
+				<Fragment>
+					{children}
+					<FontAwesomeIcon
+						className={`${styles.icon} ${styles.right}`}
+						icon={(icon as ButtonIconInterface).variant}
+					/>
+				</Fragment>
+			);
+		} else {
+			innerContent = (
+				<FontAwesomeIcon className={styles.icon} icon={icon as IconProp} />
+			);
+		}
+	}
+
 	return (
 		<button {...props} className={finalClassName}>
-			{children}
+			{innerContent}
 		</button>
 	);
 };
 
-Button.propTypes = {};
+Button.propTypes = {
+	size: PropTypes.oneOf(['', 'xs', 'sm', 'md', 'lg', 'xl']),
+	shape: PropTypes.oneOf(['', 'square', 'circle']),
+	color: PropTypes.string,
+	colorLevel: PropTypes.string,
+	hoverable: PropTypes.bool,
+	icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+} as PropTypeRecord<ButtonProps>;
 
 export default Button;

@@ -1,8 +1,18 @@
 import React, { Props } from 'react';
 import styles from './Foot.scss';
 
-const Foot = (props: Props<any>) => {
-	return <div className={styles.container}>{props.children}</div>;
+interface FootProps {
+	className?: string;
+}
+
+const Foot = (props: FootProps & Props<any>) => {
+	const { className } = props;
+
+	return (
+		<div className={`${styles.container} ${className || ''}`}>
+			{props.children}
+		</div>
+	);
 };
 
 Foot.propTypes = {};

@@ -1,3 +1,69 @@
+@import '../../../scss/color/bg-colors';
+@import '../../../scss/color/text-colors';
+@import '../../../scss/variables';
+
+$item-spacing: 16px;
+$image-spacing: $item-spacing;
+$text-content-spacing: 4px;
+$title-font-size: 18px;
+$text-font-size: 16px;
+$timestamp-font-size: 12px;
+
 .container {
 	width: 100%;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: flex-start;
+	padding: $item-spacing;
+	position: relative;
+
+	.imageContainer {
+		flex-grow: 0;
+		padding-right: $image-spacing;
+	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		position: relative;
+
+		.contentTop {
+			display: flex;
+			flex-direction: row;
+			justify-content: start;
+			align-content: center;
+
+			.title {
+				margin: 0;
+				font-size: $title-font-size;
+				flex-grow: 1;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.moreButton {
+				margin-top: -4px;
+			}
+		}
+
+		.contentText {
+			margin: 0;
+			padding-top: $text-content-spacing;
+			padding-bottom: $text-content-spacing;
+			word-wrap: break-word;
+			font-size: $text-font-size;
+			line-height: #{$text-font-size + 2px};
+			max-height: #{($text-font-size + 2px) * 2};
+			overflow: hidden;
+		}
+
+		.contentTimestamp {
+			font-size: $timestamp-font-size;
+			display: block;
+			text-align: right;
+		}
+	}
 }

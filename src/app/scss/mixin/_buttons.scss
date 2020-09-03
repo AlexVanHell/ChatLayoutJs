@@ -1,6 +1,3 @@
-@import '../function/color-pallete';
-@import '../function/text-contrast';
-@import './bg-hover';
 @import '../variables';
 
 $icon-spacing: 4px;
@@ -16,44 +13,16 @@ $icon-spacing: 4px;
 				padding: 0;
 				overflow: hidden;
 			}
-		}
-	}
-}
 
-@mixin button-hover($color, $amount) {
-	cursor: pointer;
-	&.hoverable {
-		&:not(:disabled),
-		&:not(.disabled) {
-			@include bg-hover($color, $amount);
-		}
-	}
-}
-
-@mixin button-colors {
-	@each $name, $color in $colors {
-		&.btn-#{$name} {
-			background-color: $color;
-			color: text-contrast($color);
-			@include button-hover($color, $amount: $hoverable-factor);
-		}
-
-		@each $palette-name, $palette-value in make-color-palette($color) {
-			&.btn-#{$name + '-' + $palette-name} {
-				background-color: $palette-value;
-				color: text-contrast($color: $palette-value);
-				@include button-hover(
-					$color: $palette-value,
-					$amount: $hoverable-factor
-				);
-			}
+			/* svg.icon {
+				font-size: #{($size/2)};
+			} */
 		}
 	}
 }
 
 @mixin buttons {
 	.btn {
-		background-color: transparent;
 		display: flex;
 		padding: 0 12px;
 		text-align: center;
@@ -61,6 +30,8 @@ $icon-spacing: 4px;
 		justify-content: center;
 		border-radius: $button-radius;
 		border: none;
+		outline: none;
+		background-color: transparent;
 
 		svg.icon {
 			&.left {
@@ -81,15 +52,22 @@ $icon-spacing: 4px;
 			padding: 0;
 		}
 
+		@include button-sizes();
+
 		&.hoverable {
-			cursor: pointer;
-			&:hover,
-			&:focus {
-				background-color: rgba($color: #000, $alpha: 0.07);
+			&:not(.disabled),
+			&:not(:disabled) {
+				cursor: pointer;
+				&:hover,
+				&:focus {
+					background-color: rgba($color: #000, $alpha: 0.07);
+				}
 			}
 		}
 
-		@include button-sizes();
-		@include button-colors();
+		&.disabled,
+		&:disabled {
+			cursor: none;
+		}
 	}
 }

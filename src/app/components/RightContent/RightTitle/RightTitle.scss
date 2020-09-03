@@ -1,0 +1,53 @@
+@import '../../../scss/color/text-colors';
+@import '../../../scss/variables';
+
+$photo-spacing: 16px;
+
+.container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;
+	box-sizing: border-box;
+	padding-bottom: $head-title-padding-bottom;
+
+	.userContainer {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: center;
+		flex-grow: 1;
+		height: $head-title-height;
+
+		.userPhoto {
+			margin-right: $photo-spacing;
+		}
+
+		.userName {
+			display: flex;
+			flex-direction: column;
+			align-items: baseline;
+			justify-content: center;
+			padding: 4px 0;
+			overflow: hidden;
+
+			.title {
+				margin: 0;
+				padding: 0;
+			}
+
+			.subtitle {
+				padding-top: 2px;
+				margin: 0;
+			}
+		}
+	}
+
+	.buttonsContainer {
+		display: flex;
+		flex-direction: row;
+		justify-content: end;
+		align-items: center;
+	}
+}

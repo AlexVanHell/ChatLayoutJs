@@ -1,7 +1,7 @@
 import { faArrowLeft, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React, { FormEvent, useContext, useState } from 'react';
+import { PropTypeRecord } from '../../common/type/prop-type-record.type';
 import { ThemeContext } from '../../context/theme.context';
 import Button from '../Button/Button';
 import styles from './Searchbar.scss';
@@ -9,15 +9,17 @@ import styles from './Searchbar.scss';
 export interface SearchbarProps {
 	showBackButton?: boolean;
 	showSearchButton?: boolean;
+	placeholder?: string;
 	onInputValueChange: (value: string) => void;
 	onBackClick?: () => void;
 	onSearchClick?: (value: string) => void;
 }
 
 const Searchbar = (props: SearchbarProps) => {
-	const { showBackButton, showSearchButton } = {
+	const { showBackButton, showSearchButton, placeholder }: SearchbarProps = {
 		showBackButton: true,
 		showSearchButton: true,
+		placeholder: 'Search...',
 		...props,
 	};
 	const { colors } = useContext(ThemeContext);
@@ -44,38 +46,36 @@ const Searchbar = (props: SearchbarProps) => {
 
 	return (
 		<div className={styles.container}>
-			{/* Back button */}
-			{showBackButton && (
-				<div className={styles.backButton}>
+			<div className={`${styles.inputWrapper} ${styles['bg-depth-1']}`}>
+				{/* Back button */}
+				{showBackButton && (
 					<Button
-						shape={'circle'}
-						hoverable={false}
-						className={`${styles['bg-depth-2']} ${styles.hoverable}`}
+						shape={'square'}
+						color={'depth-1'}
+						className={`${styles.backButton}`}
+						icon={faArrowLeft}
 						onClick={handleBackClick}
-					>
-						<FontAwesomeIcon icon={faArrowLeft} />
-					</Button>
-				</div>
-			)}
-			{/* Text input */}
-			<input
-				type="text"
-				className={styles['bg-depth-0']}
-				placeholder="Search"
-				value={value}
-				onInput={handleInput}
-			/>
+					/>
+				)}
+				{/* Text input */}
+				<Button shape={'square'} icon={faSearch} hoverable={false} disabled />
+				<input
+					type="text"
+					className={showBackButton ? styles.backSibling : ''}
+					placeholder={placeholder}
+					value={value}
+					onInput={handleInput}
+				/>
+			</div>
 			{/* Search button */}
 			{showSearchButton && (
-				<div className={styles.searchButton}>
-					<Button
-						color={colors.secondary}
-						onClick={handleSearchClick}
-						title="Search"
-					>
-						<FontAwesomeIcon icon={faSearch} />
-					</Button>
-				</div>
+				<Button
+					className={styles.searchButton}
+					color={colors.secondary}
+					icon={faSearch}
+					onClick={handleSearchClick}
+					title="Search"
+				/>
 			)}
 		</div>
 	);
@@ -84,8 +84,10 @@ const Searchbar = (props: SearchbarProps) => {
 Searchbar.propTypes = {
 	showBackButton: PropTypes.bool,
 	showSearchButton: PropTypes.bool,
+	placeholder: PropTypes.string,
 	onInputValueChange: PropTypes.func.isRequired,
-	onBackClick: PropTypes.func.isRequired,
-};
+	onBackClick: PropTypes.func,
+	onSearchClick: PropTypes.func,
+} as PropTypeRecord<SearchbarProps>;
 
 export default Searchbar;

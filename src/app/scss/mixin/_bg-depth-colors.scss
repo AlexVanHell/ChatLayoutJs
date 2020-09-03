@@ -10,50 +10,49 @@ $dark-base-color: map-get(
 	$key: 'dark',
 );
 
-@mixin bg-depth-color(
-	$i,
-	$bg-base-color,
-	$text-color,
-	$total,
-	$hoverable-total
-) {
+@mixin bg-depth-color($i, $base-color, $text-color, $dark) {
+	$bg-total: $i * $depth-factor;
+	$hb-total: $bg-total + 2%;
+
 	.bg-depth-#{$i} {
-		background-color: darken(
-			$color: $bg-base-color,
-			$amount: $total
-		) !important;
+		@if (dark) {
+			background-color: darken(
+				$color: $base-color,
+				$amount: $bg-total
+			) !important;
+		} @else {
+			background-color: lighten(
+				$color: $base-color,
+				$amount: $bg-total
+			) !important;
+		}
 		color: $text-color;
 
 		&.hoverable {
-			@include bg-hover($color: $bg-base-color, $amount: $hoverable-total);
+			@include bg-hover($color: $base-color, $amount: $hb-total);
 		}
 	}
 
 	.bg-depth-hover-#{$i} {
-		@include bg-hover($color: $bg-base-color, $amount: $hoverable-total);
+		@include bg-hover($color: $base-color, $amount: $hb-total);
 	}
 }
 
 @mixin bg-depth-colors {
 	@for $i from 0 to 6 {
-		$bg-total: $i * $depth-factor;
-		$hb-total: $i * $hoverable-factor;
-
 		@include bg-depth-color(
 			$i,
-			$bg-base-color: $light-base-color,
+			$base-color: $light-base-color,
 			$text-color: map-get($map: $text-colors, $key: 'black'),
-			$total: $bg-total,
-			$hoverable-total: $hb-total
+			$dark: false
 		);
 
 		.dark-theme {
 			@include bg-depth-color(
 				$i,
-				$bg-base-color: $dark-base-color,
+				$base-color: $dark-base-color,
 				$text-color: map-get($map: $text-colors, $key: 'white'),
-				$total: $bg-total,
-				$hoverable-total: $hb-total
+				$dark: true
 			);
 		}
 	}

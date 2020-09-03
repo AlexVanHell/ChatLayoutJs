@@ -1,5 +1,5 @@
-@import '../variables';
 @import '../function/color-pallete';
+@import '../variables';
 
 @mixin text-colors {
 	@each $name, $color in $colors {

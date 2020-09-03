@@ -1,20 +1,15 @@
 import { faEdit, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import Button from '../../Button/Button';
-import styles from './LeftTopContent.scss';
+import styles from './LeftTitle.scss';
 
 const LeftTopContent = () => {
 	return (
 		<div className={styles.container}>
-			<h3>Conversaciones</h3>
+			<h2 className={styles.title}>Conversaciones</h2>
 			<div className={styles.buttonsContainer}>
-				<Button shape={'circle'} size={'lg'}>
-					<FontAwesomeIcon icon={faSearch} />
-				</Button>
-				<Button shape={'circle'} size={'lg'}>
-					<FontAwesomeIcon icon={faEdit} />
-				</Button>
+				<Button shape={'circle'} size={'lg'} icon={faSearch} />
+				<Button shape={'circle'} size={'lg'} icon={faEdit} />
 			</div>
 		</div>
 	);

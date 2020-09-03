@@ -5,7 +5,7 @@ import styles from './MainContainer.scss';
 
 const MainContainer = () => {
 	return (
-		<div className={styles.container}>
+		<div className={`${styles.container} ${styles['bg-depth-1']}`}>
 			<div className={`${styles.content} ${styles.left}`}>
 				<LeftContent />
 			</div>

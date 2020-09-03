@@ -14,21 +14,34 @@ $spacing: 6px;
 	align-items: center;
 	justify-items: flex-start;
 
-	.backButton {
-		padding-right: $spacing;
-	}
-
-	input[type='text'] {
-		display: block;
+	.inputWrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: center;
 		flex-grow: 1;
-		border: none;
-		box-sizing: border-box;
-		padding: 0 1rem;
-		border-radius: 5px;
+		padding: 0;
+		border-radius: $input-radius;
 		height: $input-height;
+
+		button.backButton {
+			margin-right: 0;
+		}
+
+		input[type='text'] {
+			display: block;
+			flex-grow: 1;
+			border: none;
+			box-sizing: border-box;
+			padding: 0 8px 0 0;
+			border-radius: $input-radius;
+			height: $input-height;
+			background-color: transparent;
+			outline: none;
+		}
 	}
 
-	.searchButton {
-		padding-left: $spacing;
+	button.searchButton {
+		margin-left: $spacing;
 	}
 }

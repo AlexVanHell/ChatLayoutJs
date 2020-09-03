@@ -1,0 +1,32 @@
+@import '../../scss/color/text-colors';
+@import '../../scss/variables';
+
+@mixin image-sizes {
+	@each $name, $size in $image-sizes {
+		&.img-#{$name} {
+			width: $size !important;
+			height: $size !important;
+
+			.textContainer {
+				font-size: #{$size/2};
+				display: block;
+			}
+		}
+	}
+}
+
+.container {
+	border-radius: 100%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #848484;
+
+	@include image-sizes();
+
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+}

@@ -1,7 +1,5 @@
+@import '../../scss/color/bg-colors';
 @import '../../scss/variables';
-
-$left-content-size: 320px;
-$right-content-size: calc(100% - #{$left-content-size});
 
 .container {
 	width: 100%;
@@ -11,6 +9,8 @@ $right-content-size: calc(100% - #{$left-content-size});
 	flex-direction: row;
 	position: relative;
 	font-family: $font-family;
+	border-radius: 10px;
+	border: 1px solid rgba($color: #000, $alpha: 0.2);
 
 	.content {
 		position: absolute;
