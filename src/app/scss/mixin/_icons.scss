@@ -1,0 +1,11 @@
+@import '../variables';
+
+@mixin icon-sizes {
+	@each $name, $size in $icon-sizes {
+		.icon {
+			&.icon-#{$name} {
+				font-size: $size !important;
+			}
+		}
+	}
+}

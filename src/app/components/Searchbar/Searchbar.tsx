@@ -15,6 +15,8 @@ export interface SearchbarProps {
 	onSearchClick?: (value: string) => void;
 }
 
+const elementsHeight = 'lg';
+
 const Searchbar = (props: SearchbarProps) => {
 	const { showBackButton, showSearchButton, placeholder }: SearchbarProps = {
 		showBackButton: true,
@@ -51,6 +53,7 @@ const Searchbar = (props: SearchbarProps) => {
 				{showBackButton && (
 					<Button
 						shape={'square'}
+						size={elementsHeight}
 						color={'depth-1'}
 						className={`${styles.backButton}`}
 						icon={faArrowLeft}
@@ -71,6 +74,7 @@ const Searchbar = (props: SearchbarProps) => {
 			{showSearchButton && (
 				<Button
 					className={styles.searchButton}
+					size={elementsHeight}
 					color={colors.secondary}
 					icon={faSearch}
 					onClick={handleSearchClick}

@@ -1,5 +1,56 @@
 /* Buttons */
 @import '../../scss/color/bg-colors';
+@import '../../scss/color/text-colors';
 @import '../../scss/mixin/buttons';
+@import '../../scss/variables';
 
-@include buttons();
+$icon-spacing: 8px;
+
+.btn {
+	display: flex;
+	padding: 0 12px;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	border-radius: $button-radius;
+	border: none;
+	outline: none;
+	background-color: transparent;
+
+	.icon {
+		&.left {
+			margin-right: $icon-spacing;
+		}
+
+		&.right {
+			margin-left: $icon-spacing;
+		}
+	}
+
+	&.btn-square {
+		border-radius: $button-radius;
+		padding: 0;
+	}
+	&.btn-circle {
+		border-radius: 100%;
+		padding: 0;
+	}
+
+	@include button-sizes();
+
+	&.hoverable {
+		&:not(.disabled),
+		&:not(:disabled) {
+			cursor: pointer;
+			&:hover,
+			&:focus {
+				background-color: rgba($color: #000, $alpha: 0.07);
+			}
+		}
+	}
+
+	&.disabled,
+	&:disabled {
+		cursor: none;
+	}
+}

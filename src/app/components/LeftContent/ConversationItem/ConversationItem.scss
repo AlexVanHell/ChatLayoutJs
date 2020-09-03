@@ -54,6 +54,7 @@ $timestamp-font-size: 12px;
 			padding-top: $text-content-spacing;
 			padding-bottom: $text-content-spacing;
 			word-wrap: break-word;
+			text-overflow: ellipsis;
 			font-size: $text-font-size;
 			line-height: #{$text-font-size + 2px};
 			max-height: #{($text-font-size + 2px) * 2};

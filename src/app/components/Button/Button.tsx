@@ -1,16 +1,16 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React, { ButtonHTMLAttributes, Fragment } from 'react';
 import { BgDepthColorType } from '../../common/color/bg-depth-color.type';
 import { ColorLevelType } from '../../common/color/color-level.type';
 import { ColorType } from '../../common/color/color.type';
 import { PropTypeRecord } from '../../common/type/prop-type-record.type';
+import Icon, { IconProps } from '../Icon/Icon';
 import styles from './Button.scss';
 
-interface ButtonIconInterface {
-	position: 'left' | 'right';
-	variant: IconProp;
+interface ButtonIconOptions {
+	position?: 'left' | 'right';
+	size?: IconProps['size'];
 }
 
 type ButtonSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -20,13 +20,15 @@ type ButtonShapeType = '' | 'square' | 'circle';
 type ButtonColorType = '' | ColorType | BgDepthColorType;
 
 type ButtonColorLevelType = '' | ColorLevelType;
-interface ButtonProps {
+export interface ButtonProps {
 	size?: ButtonSizeType;
 	shape?: ButtonShapeType;
 	color?: ButtonColorType;
 	colorLevel?: ButtonColorLevelType;
+	textColor?: ButtonColorType;
 	hoverable?: boolean;
-	icon?: IconProp | ButtonIconInterface;
+	icon?: IconProp;
+	iconOptions?: ButtonIconOptions;
 }
 
 const defaultProps: ButtonProps = {
@@ -34,6 +36,7 @@ const defaultProps: ButtonProps = {
 	shape: '',
 	color: '',
 	colorLevel: '',
+	textColor: '',
 	hoverable: true,
 };
 
@@ -45,7 +48,9 @@ const Button = (
 		shape,
 		color,
 		colorLevel,
+		textColor,
 		icon,
+		iconOptions,
 		hoverable,
 		className,
 		children,
@@ -73,33 +78,41 @@ const Button = (
 		finalClassName += ` ${className}`;
 	}
 
+	if (textColor) {
+		finalClassName += ` ${styles['text-' + textColor]}`;
+	}
+
 	let innerContent = children;
 
 	if (icon) {
-		if ((icon as ButtonIconInterface).position === 'left') {
-			innerContent = (
-				<Fragment>
-					<FontAwesomeIcon
-						className={`${styles.icon} ${styles.left}`}
-						icon={(icon as ButtonIconInterface).variant}
-					/>
-					{children}
-				</Fragment>
+		if (iconOptions) {
+			const iconContent = (
+				<Icon
+					icon={icon}
+					size={iconOptions.size}
+					className={`${styles.icon} ${
+						iconOptions.position ? styles[iconOptions.position] : ''
+					}`}
+				/>
 			);
-		} else if ((icon as ButtonIconInterface).position === 'right') {
-			innerContent = (
-				<Fragment>
-					{children}
-					<FontAwesomeIcon
-						className={`${styles.icon} ${styles.right}`}
-						icon={(icon as ButtonIconInterface).variant}
-					/>
-				</Fragment>
-			);
+
+			if (iconOptions.position === 'left') {
+				innerContent = (
+					<Fragment>
+						{iconContent}
+						{children}
+					</Fragment>
+				);
+			} else {
+				innerContent = (
+					<Fragment>
+						{children}
+						{iconContent}
+					</Fragment>
+				);
+			}
 		} else {
-			innerContent = (
-				<FontAwesomeIcon className={styles.icon} icon={icon as IconProp} />
-			);
+			innerContent = <Icon className={styles.icon} icon={icon as IconProp} />;
 		}
 	}
 
@@ -115,8 +128,10 @@ Button.propTypes = {
 	shape: PropTypes.oneOf(['', 'square', 'circle']),
 	color: PropTypes.string,
 	colorLevel: PropTypes.string,
+	textColor: PropTypes.string,
 	hoverable: PropTypes.bool,
 	icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+	iconOptions: PropTypes.object,
 } as PropTypeRecord<ButtonProps>;
 
 export default Button;

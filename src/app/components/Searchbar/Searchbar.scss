@@ -3,9 +3,10 @@
 
 $input-height: map-get(
 	$map: $button-sizes,
-	$key: 'md',
+	$key: 'lg',
 );
 $spacing: 6px;
+$input-font-size: 16px;
 
 .container {
 	padding: 0;
@@ -35,7 +36,8 @@ $spacing: 6px;
 			box-sizing: border-box;
 			padding: 0 8px 0 0;
 			border-radius: $input-radius;
-			height: $input-height;
+			height: 100%;
+			font-size: $input-font-size;
 			background-color: transparent;
 			outline: none;
 		}

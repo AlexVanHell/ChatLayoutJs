@@ -1,0 +1,50 @@
+@import '../../../scss/color/bg-colors';
+@import '../../../scss/color/text-colors';
+@import '../../../scss/variables';
+
+$container-padding: 8px;
+$button-spacing: 8px;
+$textarea-padding: 11px 12px;
+$textarea-font-size: 16px;
+$textarea-min-height: map-get(
+	$map: $button-sizes,
+	$key: 'lg',
+);
+
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	box-sizing: border-box;
+	padding: $container-padding;
+
+	.actionButtons {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: center;
+		align-self: center;
+		padding-right: $button-spacing;
+	}
+
+	textarea.messageInput {
+		display: block;
+		flex-grow: 1;
+		border: none;
+		box-sizing: border-box;
+		padding: $textarea-padding;
+		border-radius: $input-radius;
+		font-size: $textarea-font-size;
+		min-height: $textarea-min-height;
+		font-family: $font-family;
+		background-color: transparent;
+		outline: none;
+		resize: none;
+	}
+
+	button.sendButton {
+		margin-left: $button-spacing;
+	}
+}

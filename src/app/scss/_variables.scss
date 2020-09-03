@@ -11,8 +11,8 @@ $list-groups-height: 40px;
 $left-content-size: 380px;
 $right-content-size: calc(100% - #{$left-content-size});
 
-$button-radius: 5px;
-$input-radius: 5px;
+$button-radius: 8px;
+$input-radius: 8px;
 
 $depth-factor: 4%;
 $color-hoverable-factor: 4%;
@@ -35,6 +35,8 @@ $image-sizes: (
 	'sm': 24px,
 	'md': 40px,
 	'lg': 56px,
+	'xl': 72px,
+	'xxl': 96px,
 );
 
 $button-sizes: (
@@ -43,6 +45,15 @@ $button-sizes: (
 	'md': 32px,
 	'lg': 40px,
 	'xl': 56px,
+	'xxl': 72px,
+);
+
+$icon-sizes: (
+	'sm': 12px,
+	'md': 14px,
+	'lg': 18px,
+	'xl': 22px,
+	'xxl': 32px,
 );
 
 $colors: (

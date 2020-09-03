@@ -2,6 +2,7 @@ import React from 'react';
 import Foot from '../Foot/Foot';
 import Head from '../Head/Head';
 import Searchbar from '../Searchbar/Searchbar';
+import Conversation from './Conversation/Conversation';
 import styles from './RightContent.scss';
 import RightTitle from './RightTitle/RightTitle';
 
@@ -16,7 +17,9 @@ const RightContent = () => {
 				<RightTitle />
 				<Searchbar onInputValueChange={handleSearchInputValueChange} />
 			</Head>
-			<Foot>Foot</Foot>
+			<Foot>
+				<Conversation />
+			</Foot>
 		</div>
 	);
 };

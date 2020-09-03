@@ -23,7 +23,7 @@ const ConversationItem = (/* props: ConversationItemProps */) => {
 				<ConversationImage
 					text={'AV'}
 					size={'lg'}
-					className={styles['bg-lightblue']}
+					className={styles['bg-purple-300']}
 				/>
 			</div>
 			<div className={styles.content}>

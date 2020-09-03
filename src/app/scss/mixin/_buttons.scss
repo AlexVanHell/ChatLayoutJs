@@ -1,11 +1,11 @@
 @import '../variables';
 
-$icon-spacing: 4px;
-
 @mixin button-sizes {
 	@each $name, $size in $button-sizes {
 		&.btn-#{$name} {
 			height: $size !important;
+			padding: 0 #{$size/2};
+			font-size: #{$size/2.5};
 
 			&.btn-square,
 			&.btn-circle {
@@ -13,61 +13,6 @@ $icon-spacing: 4px;
 				padding: 0;
 				overflow: hidden;
 			}
-
-			/* svg.icon {
-				font-size: #{($size/2)};
-			} */
-		}
-	}
-}
-
-@mixin buttons {
-	.btn {
-		display: flex;
-		padding: 0 12px;
-		text-align: center;
-		align-items: center;
-		justify-content: center;
-		border-radius: $button-radius;
-		border: none;
-		outline: none;
-		background-color: transparent;
-
-		svg.icon {
-			&.left {
-				margin-right: $icon-spacing;
-			}
-
-			&.right {
-				padding-left: $icon-spacing;
-			}
-		}
-
-		&.btn-square {
-			border-radius: $button-radius;
-			padding: 0;
-		}
-		&.btn-circle {
-			border-radius: 100%;
-			padding: 0;
-		}
-
-		@include button-sizes();
-
-		&.hoverable {
-			&:not(.disabled),
-			&:not(:disabled) {
-				cursor: pointer;
-				&:hover,
-				&:focus {
-					background-color: rgba($color: #000, $alpha: 0.07);
-				}
-			}
-		}
-
-		&.disabled,
-		&:disabled {
-			cursor: none;
 		}
 	}
 }

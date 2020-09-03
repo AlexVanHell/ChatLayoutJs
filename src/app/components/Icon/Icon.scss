@@ -1,0 +1,8 @@
+@import '../../scss/mixin/icons';
+@import '../../scss/variables';
+
+.icon {
+	display: inline;
+}
+
+@include icon-sizes();
