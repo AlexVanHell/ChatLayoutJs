@@ -1,6 +1,16 @@
+$content-padding: 24px;
+
 .container {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	flex-grow: 1;
+
+	.content {
+		justify-self: end;
+		box-sizing: border-box;
+		max-height: 100%;
+		width: 100%;
+		padding: $content-padding;
+	}
 }

@@ -7,7 +7,7 @@ import { PropTypeRecord } from '../../common/type/prop-type-record.type';
 import styles from './Icon.scss';
 
 export interface IconProps extends ClassNamePropInterface {
-	size?: '' | 'sm' | 'md' | 'lg';
+	size?: '' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 	icon: IconProp;
 }
 

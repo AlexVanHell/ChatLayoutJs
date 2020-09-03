@@ -4,6 +4,7 @@ import React, { ButtonHTMLAttributes, Fragment } from 'react';
 import { BgDepthColorType } from '../../common/color/bg-depth-color.type';
 import { ColorLevelType } from '../../common/color/color-level.type';
 import { ColorType } from '../../common/color/color.type';
+import { FormControlSizeType } from '../../common/size/form-control-size.type';
 import { PropTypeRecord } from '../../common/type/prop-type-record.type';
 import Icon, { IconProps } from '../Icon/Icon';
 import styles from './Button.scss';
@@ -13,15 +14,13 @@ interface ButtonIconOptions {
 	size?: IconProps['size'];
 }
 
-type ButtonSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
 type ButtonShapeType = '' | 'square' | 'circle';
 
 type ButtonColorType = '' | ColorType | BgDepthColorType;
 
 type ButtonColorLevelType = '' | ColorLevelType;
 export interface ButtonProps {
-	size?: ButtonSizeType;
+	size?: FormControlSizeType;
 	shape?: ButtonShapeType;
 	color?: ButtonColorType;
 	colorLevel?: ButtonColorLevelType;

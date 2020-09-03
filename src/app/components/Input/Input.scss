@@ -1,0 +1,23 @@
+@import '../../scss/mixin/form-controls';
+@import '../../scss/variables';
+
+$input-default-height: 40px;
+$input-default-padding: 0 16px;
+$input-default-font-size: 16px;
+
+.form-control {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	height: $input-default-height;
+	border: none;
+	outline: none;
+	border-radius: $input-radius;
+	padding: $input-default-padding;
+	border-radius: $input-radius;
+	font-size: $input-default-font-size;
+	background-color: transparent;
+	outline: none;
+
+	@include form-control-sizes();
+}

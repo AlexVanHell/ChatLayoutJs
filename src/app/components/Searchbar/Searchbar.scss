@@ -2,11 +2,10 @@
 @import '../../scss/color/bg-colors';
 
 $input-height: map-get(
-	$map: $button-sizes,
+	$map: $controls-sizes,
 	$key: 'lg',
 );
-$spacing: 6px;
-$input-font-size: 16px;
+$button-spacing: 6px;
 
 .container {
 	padding: 0;
@@ -23,27 +22,18 @@ $input-font-size: 16px;
 		flex-grow: 1;
 		padding: 0;
 		border-radius: $input-radius;
-		height: $input-height;
 
 		button.backButton {
 			margin-right: 0;
 		}
 
-		input[type='text'] {
-			display: block;
+		.searchInput {
 			flex-grow: 1;
-			border: none;
-			box-sizing: border-box;
-			padding: 0 8px 0 0;
-			border-radius: $input-radius;
-			height: 100%;
-			font-size: $input-font-size;
-			background-color: transparent;
-			outline: none;
+			padding-left: 4px;
 		}
 	}
 
 	button.searchButton {
-		margin-left: $spacing;
+		margin-left: $button-spacing;
 	}
 }

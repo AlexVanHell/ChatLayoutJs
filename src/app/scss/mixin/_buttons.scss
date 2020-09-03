@@ -1,15 +1,16 @@
 @import '../variables';
 
 @mixin button-sizes {
-	@each $name, $size in $button-sizes {
+	@each $name, $size in $controls-sizes {
 		&.btn-#{$name} {
-			height: $size !important;
+			height: $size;
 			padding: 0 #{$size/2};
 			font-size: #{$size/2.5};
 
 			&.btn-square,
 			&.btn-circle {
 				width: $size !important;
+				height: $size !important;
 				padding: 0;
 				overflow: hidden;
 			}

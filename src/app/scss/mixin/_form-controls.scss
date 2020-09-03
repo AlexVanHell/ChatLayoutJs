@@ -1,0 +1,11 @@
+@import '../variables';
+
+@mixin form-control-sizes {
+	@each $name, $size in $controls-sizes {
+		&.form-control-#{$name} {
+			height: $size;
+			padding: 0 #{$size/3};
+			font-size: #{$size/2.5};
+		}
+	}
+}

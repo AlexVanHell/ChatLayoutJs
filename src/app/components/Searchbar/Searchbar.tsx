@@ -1,27 +1,33 @@
 import { faArrowLeft, faSearch } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import React, { FormEvent, useContext, useState } from 'react';
+import { FormControlSizeType } from '../../common/size/form-control-size.type';
 import { PropTypeRecord } from '../../common/type/prop-type-record.type';
 import { ThemeContext } from '../../context/theme.context';
 import Button from '../Button/Button';
+import Input from '../Input/Input';
 import styles from './Searchbar.scss';
 
 export interface SearchbarProps {
 	showBackButton?: boolean;
 	showSearchButton?: boolean;
-	placeholder?: string;
+	inputPlaceholder?: string;
 	onInputValueChange: (value: string) => void;
 	onBackClick?: () => void;
 	onSearchClick?: (value: string) => void;
 }
 
-const elementsHeight = 'lg';
+const elementsHeight: FormControlSizeType = 'lg';
 
 const Searchbar = (props: SearchbarProps) => {
-	const { showBackButton, showSearchButton, placeholder }: SearchbarProps = {
+	const {
+		showBackButton,
+		showSearchButton,
+		inputPlaceholder: placeholder,
+	}: SearchbarProps = {
 		showBackButton: true,
 		showSearchButton: true,
-		placeholder: 'Search...',
+		inputPlaceholder: 'Search...',
 		...props,
 	};
 	const { colors } = useContext(ThemeContext);
@@ -62,9 +68,10 @@ const Searchbar = (props: SearchbarProps) => {
 				)}
 				{/* Text input */}
 				<Button shape={'square'} icon={faSearch} hoverable={false} disabled />
-				<input
-					type="text"
-					className={showBackButton ? styles.backSibling : ''}
+				<Input
+					className={styles.searchInput}
+					type={'text'}
+					uiSize={elementsHeight}
 					placeholder={placeholder}
 					value={value}
 					onInput={handleInput}
@@ -88,7 +95,7 @@ const Searchbar = (props: SearchbarProps) => {
 Searchbar.propTypes = {
 	showBackButton: PropTypes.bool,
 	showSearchButton: PropTypes.bool,
-	placeholder: PropTypes.string,
+	inputPlaceholder: PropTypes.string,
 	onInputValueChange: PropTypes.func.isRequired,
 	onBackClick: PropTypes.func,
 	onSearchClick: PropTypes.func,

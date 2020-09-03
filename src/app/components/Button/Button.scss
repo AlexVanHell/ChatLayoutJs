@@ -5,13 +5,16 @@
 @import '../../scss/variables';
 
 $icon-spacing: 8px;
+$default-padding: 0 12px;
+$default-hover-factor: 0.07;
 
 .btn {
 	display: flex;
-	padding: 0 12px;
-	text-align: center;
-	align-items: center;
+	display: flex;
 	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: $default-padding;
 	border-radius: $button-radius;
 	border: none;
 	outline: none;
@@ -44,13 +47,13 @@ $icon-spacing: 8px;
 			cursor: pointer;
 			&:hover,
 			&:focus {
-				background-color: rgba($color: #000, $alpha: 0.07);
+				background-color: rgba($color: #000, $alpha: $default-hover-factor);
 			}
 		}
 	}
 
 	&.disabled,
 	&:disabled {
-		cursor: none;
+		cursor: default;
 	}
 }
