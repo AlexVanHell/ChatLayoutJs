@@ -1,5 +1,38 @@
 $container-spacing: 8px 0;
+$image-spacing: 4px;
 
 .container {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
 	padding: $container-spacing;
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+	}
+
+	.imageContainer {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		flex-grow: 0;
+	}
+
+	&.left {
+		justify-content: flex-start;
+
+		.imageContainer {
+			padding-right: $image-spacing;
+		}
+	}
+
+	&.right {
+		justify-content: flex-end;
+
+		.imageContainer {
+			padding-left: $image-spacing;
+		}
+	}
 }

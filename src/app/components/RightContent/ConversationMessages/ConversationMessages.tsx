@@ -20,32 +20,45 @@ const ConversationMessages = (/* props: ConversationMessagesProps */) => {
 					text: 'Hello world',
 				},
 				{
-					type: 'text',
+					type: 'photo',
 					text: 'Hello world',
+					imageSrc:
+						'https://www.yourtrainingedge.com/wp-content/uploads/2019/05/background-calm-clouds-747964.jpg',
 				},
 			],
+			image: {
+				text: 'AV',
+			},
 		},
 		{
 			position: 'left',
 			items: [
 				{
-					type: 'text',
-					text: 'Hello world',
+					type: 'photo',
+					text:
+						'Hello world, this is a longer text for testing photos. Lorem ipsum dolor sit amet',
+					imageSrc:
+						'https://i.pinimg.com/originals/63/31/43/63314356111086235a76d77849ff224d.jpg',
 				},
 				{
 					type: 'text',
 					text: 'Hello world',
 				},
 			],
+			image: {
+				text: 'AV',
+			},
 		},
 	];
 
 	return (
 		<div className={styles.container}>
-			<div className={styles.content}>
-				{messageGroups.map((mg, index) => (
-					<MessagesGroup {...mg} showImage={true} key={index} />
-				))}
+			<div className={styles.scroll}>
+				<div className={styles.content}>
+					{messageGroups.map((mg, index) => (
+						<MessagesGroup {...mg} key={index} />
+					))}
+				</div>
 			</div>
 		</div>
 	);

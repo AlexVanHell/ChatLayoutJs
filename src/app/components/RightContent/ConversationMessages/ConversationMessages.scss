@@ -1,16 +1,22 @@
 $content-padding: 24px;
 
 .container {
-	display: flex;
-	flex-direction: column;
 	width: 100%;
 	flex-grow: 1;
+	overflow: hidden;
 
-	.content {
-		justify-self: end;
-		box-sizing: border-box;
-		max-height: 100%;
+	.scroll {
+		display: flex;
+		flex-direction: column;
 		width: 100%;
-		padding: $content-padding;
+		height: 100%;
+		overflow-y: auto;
+
+		.content {
+			justify-self: flex-end;
+			box-sizing: border-box;
+			width: 100%;
+			padding: $content-padding;
+		}
 	}
 }

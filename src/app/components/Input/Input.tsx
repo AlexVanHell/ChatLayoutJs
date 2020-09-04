@@ -23,8 +23,6 @@ const Input = (props: InputProps & InputHTMLAttributes<HTMLInputElement>) => {
 		...props,
 	};
 
-	console.log(styles, props);
-
 	return (
 		<input
 			{...props}
