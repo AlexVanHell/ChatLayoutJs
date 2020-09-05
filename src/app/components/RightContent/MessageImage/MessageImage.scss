@@ -1,0 +1,17 @@
+$image-max-size: 360px;
+$image-bg-color: #000;
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $image-bg-color;
+	cursor: pointer;
+
+	.image {
+		width: auto;
+		max-width: $image-max-size;
+		max-height: $image-max-size;
+		height: auto;
+	}
+}

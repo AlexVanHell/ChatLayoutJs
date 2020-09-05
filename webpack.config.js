@@ -47,7 +47,9 @@ module.exports = {
 		],
 	},
 	plugins: [
-		new WriteFilePlugin(),
+		new WriteFilePlugin({
+			test: /^(?!.*(hot)).*/,
+		}),
 		new MiniCssExtractPlugin({
 			// Options similar to the same options in webpackOptions.output
 			// both options are optional

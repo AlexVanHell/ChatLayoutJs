@@ -58,7 +58,6 @@ const ConversationForm = (/* props: ConversationFormProps */) => {
 						{...actionButtonProps}
 						textColor={colors.primary}
 						icon={button.icon}
-						iconOptions={{ size: 'lg' }}
 						title={button.title}
 					/>
 				))}

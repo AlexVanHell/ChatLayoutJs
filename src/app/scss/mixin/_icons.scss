@@ -4,7 +4,7 @@
 	@each $name, $size in $icon-sizes {
 		.icon {
 			&.icon-#{$name} {
-				font-size: $size !important;
+				font-size: $size;
 			}
 		}
 	}

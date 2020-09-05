@@ -4,3 +4,7 @@
 
 @include bg-depth-colors();
 @include bg-theme-colors();
+
+.bg-transparent {
+	background-color: transparent;
+}

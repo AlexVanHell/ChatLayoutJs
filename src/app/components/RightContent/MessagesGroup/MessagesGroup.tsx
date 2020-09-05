@@ -5,7 +5,7 @@ import { ColorType } from '../../../common/color/color.type';
 import { PropTypeRecord } from '../../../common/type/prop-type-record.type';
 import { ThemeContext } from '../../../context/theme.context';
 import ConversationImage from '../../ConversationImage/ConversationImage';
-import MessageItem from '../MessageItem/MessageItem';
+import MessageItem, { MessageUnionType } from '../Message/Message';
 import styles from './MessagesGroup.scss';
 
 interface MessageGroupImage {
@@ -15,11 +15,7 @@ interface MessageGroupImage {
 
 export interface MessagesGroupProps {
 	position: 'left' | 'right';
-	items: {
-		type: 'text' | 'photo' | 'location' | 'document' | 'url';
-		text?: string;
-		imageSrc?: string;
-	}[];
+	items: MessageUnionType[];
 	image?: MessageGroupImage;
 }
 

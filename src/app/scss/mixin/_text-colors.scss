@@ -4,13 +4,13 @@
 @mixin text-colors {
 	@each $name, $color in $colors {
 		.text-#{$name} {
-			color: $color !important;
+			color: $color;
 		}
 	}
 
 	@each $name, $color in $text-colors {
 		.text-#{$name} {
-			color: $color !important;
+			color: $color;
 		}
 	}
 }

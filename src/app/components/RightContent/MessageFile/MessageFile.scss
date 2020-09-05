@@ -1,0 +1,38 @@
+@import '../../../scss/color/bg-colors';
+@import '../../../scss/color/text-colors';
+
+$container-padding: 4px;
+$content-radius: 12px;
+$content-padding: 12px;
+$icon-spacing: 16px;
+$content-font-size: 18px;
+$content-spacing: 4px;
+
+.container {
+	padding: $container-padding;
+	margin-bottom: -4px;
+	cursor: pointer;
+
+	.content {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		border-radius: $content-radius;
+		padding: $content-padding;
+		overflow: hidden;
+
+		.iconContainer {
+			padding-right: $icon-spacing;
+			opacity: 0.8;
+		}
+
+		.details {
+			p {
+				margin: 0;
+				padding: $content-spacing 0;
+				font-size: $content-font-size;
+			}
+		}
+	}
+}

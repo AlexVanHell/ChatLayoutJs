@@ -14,7 +14,7 @@ $button-radius: 8px;
 $input-radius: 8px;
 
 $depth-factor: 4%;
-$color-hoverable-factor: 4%;
+$color-hoverable-amount: 4%;
 $button-hoverable-factor: 8%;
 
 $bg-depth-light-map: ();
@@ -51,8 +51,8 @@ $icon-sizes: (
 	'sm': 12px,
 	'md': 16px,
 	'lg': 20px,
-	'xl': 22px,
-	'xxl': 32px,
+	'xl': 28px,
+	'xxl': 48px,
 );
 
 $colors: (

@@ -12,29 +12,31 @@ $dark-base-color: map-get(
 
 @mixin bg-depth-color($i, $base-color, $text-color, $dark) {
 	$bg-total: $i * $depth-factor;
-	$hb-total: $bg-total + 2%;
+	$hb-total: $bg-total + 4%;
 
 	.bg-depth-#{$i} {
-		@if (dark) {
-			background-color: darken(
-				$color: $base-color,
-				$amount: $bg-total
-			) !important;
-		} @else {
-			background-color: lighten(
-				$color: $base-color,
-				$amount: $bg-total
-			) !important;
-		}
 		color: $text-color;
+		@if (dark) {
+			background-color: darken($color: $base-color, $amount: $bg-total);
+		} @else {
+			background-color: lighten($color: $base-color, $amount: $bg-total);
+		}
 
 		&.hoverable {
-			@include bg-hover($color: $base-color, $amount: $hb-total);
+			@include bg-hover(
+				$color: $base-color,
+				$amount: $hb-total,
+				$darken: $dark == false
+			);
 		}
 	}
 
 	.bg-depth-hover-#{$i} {
-		@include bg-hover($color: $base-color, $amount: $hb-total);
+		@include bg-hover(
+			$color: $base-color,
+			$amount: $hb-total,
+			$darken: $dark == false
+		);
 	}
 }
 

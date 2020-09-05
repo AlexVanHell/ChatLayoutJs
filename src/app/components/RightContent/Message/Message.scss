@@ -6,15 +6,13 @@ $container-spacing: 2px;
 
 $bubble-max-width: 60%;
 $bubble-padding: 0;
-$bubble-content-padding: 12px 16px;
+$bubble-content-padding: 12px;
 $bubble-radius: 12px;
 $multimedia-radius: #{$bubble-radius} #{$bubble-radius} 2px 2px;
 
 $text-padding: 0;
 $timestamp-font-size: 12px;
 $timestamp-spacing: 2px;
-
-$image-max-size: 360px;
 
 .container {
 	display: flex;
@@ -39,20 +37,8 @@ $image-max-size: 360px;
 			padding: $bubble-padding;
 
 			.multimedia {
-				background-color: #000;
-				display: flex;
-				flex-direction: row;
-				justify-content: center;
 				overflow: hidden;
 				border-radius: $multimedia-radius;
-				cursor: pointer;
-
-				img {
-					width: auto;
-					max-width: $image-max-size;
-					max-height: $image-max-size;
-					height: auto;
-				}
 			}
 
 			.bubbleContent {
@@ -62,7 +48,7 @@ $image-max-size: 360px;
 
 				p.text {
 					box-sizing: border-box;
-					padding: $text-padding;
+					padding-bottom: $timestamp-spacing;
 					margin: 0;
 					word-wrap: break-word;
 					word-spacing: normal;
@@ -73,7 +59,6 @@ $image-max-size: 360px;
 					font-size: $timestamp-font-size;
 					text-align: right;
 					opacity: 0.7;
-					padding-top: $timestamp-spacing;
 				}
 			}
 		}

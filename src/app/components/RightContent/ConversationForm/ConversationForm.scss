@@ -29,7 +29,7 @@ $textarea-min-height: map-get(
 		padding-right: $button-spacing;
 	}
 
-	textarea.messageInput {
+	.messageInput {
 		display: block;
 		flex-grow: 1;
 		border: none;
@@ -39,7 +39,6 @@ $textarea-min-height: map-get(
 		font-size: $textarea-font-size;
 		min-height: $textarea-min-height;
 		font-family: $font-family;
-		background-color: transparent;
 		outline: none;
 		resize: none;
 	}

@@ -16,7 +16,6 @@ $input-default-font-size: 16px;
 	padding: $input-default-padding;
 	border-radius: $input-radius;
 	font-size: $input-default-font-size;
-	background-color: transparent;
 	outline: none;
 
 	@include form-control-sizes();

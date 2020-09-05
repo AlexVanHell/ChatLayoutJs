@@ -18,6 +18,7 @@ export interface SearchbarProps {
 }
 
 const elementsHeight: FormControlSizeType = 'lg';
+const backgroundClass = styles['bg-depth-1'];
 
 const Searchbar = (props: SearchbarProps) => {
 	const {
@@ -54,7 +55,7 @@ const Searchbar = (props: SearchbarProps) => {
 
 	return (
 		<div className={styles.container}>
-			<div className={`${styles.inputWrapper} ${styles['bg-depth-1']}`}>
+			<div className={`${styles.inputWrapper} ${backgroundClass}`}>
 				{/* Back button */}
 				{showBackButton && (
 					<Button
@@ -69,7 +70,7 @@ const Searchbar = (props: SearchbarProps) => {
 				{/* Text input */}
 				<Button shape={'square'} icon={faSearch} hoverable={false} disabled />
 				<Input
-					className={styles.searchInput}
+					className={`${styles.searchInput} ${backgroundClass}`}
 					type={'text'}
 					uiSize={elementsHeight}
 					placeholder={placeholder}

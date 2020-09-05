@@ -16,7 +16,7 @@ interface ButtonIconOptions {
 
 type ButtonShapeType = '' | 'square' | 'circle';
 
-type ButtonColorType = '' | ColorType | BgDepthColorType;
+type ButtonColorType = '' | 'transparent' | ColorType | BgDepthColorType;
 
 type ButtonColorLevelType = '' | ColorLevelType;
 export interface ButtonProps {
@@ -64,10 +64,10 @@ const Button = (
 		finalClassName += ` ${styles['btn-' + shape]}`;
 	}
 
-	if (color) {
-		const finalColor = `${color}${colorLevel ? '-' + colorLevel : ''}`;
-		finalClassName += ` ${styles['bg-' + finalColor]}`;
-	}
+	const finalColor = `${color || 'transparent'}${
+		colorLevel ? '-' + colorLevel : ''
+	}`;
+	finalClassName += ` ${styles['bg-' + finalColor]}`;
 
 	if (hoverable) {
 		finalClassName += ` ${styles.hoverable}`;

@@ -3,27 +3,38 @@
 @import './bg-hover';
 @import '../variables';
 
+$light-hover-colors: (600 700 800 900);
+
 @mixin bg-theme-colors {
 	@each $name, $color in $colors {
 		.bg-#{$name} {
-			background-color: $color !important;
+			background-color: $color;
 			color: text-contrast($color);
 			&.hoverable {
 				&:not(.disabled),
 				&:not(:disabled) {
-					@include bg-hover($color, $amount: $color-hoverable-factor);
+					@include bg-hover($color: $color, $amount: $color-hoverable-amount);
 				}
 			}
 		}
 
 		@each $palette-name, $palette-value in make-color-palette($color) {
 			.bg-#{$name + '-' + $palette-name} {
-				background-color: $palette-value !important;
+				background-color: $palette-value;
 				color: text-contrast($color: $palette-value);
 				&.hoverable {
 					&:not(.disabled),
-					&:not(:disabled)  {
-						@include bg-hover($palette-value, $amount: $color-hoverable-factor);
+					&:not(:disabled) {
+						$is-darken-hover: index(
+								$list: $light-hover-colors,
+								$value: $palette-name,
+							) ==
+							null;
+
+						@include bg-hover(
+							$color: $palette-value,
+							$amount: $color-hoverable-amount
+						);
 					}
 				}
 			}
